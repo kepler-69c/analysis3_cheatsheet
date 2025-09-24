@@ -1,0 +1,40 @@
+\section{Preliminaries}
+\textbf{ODE}: Ordinary differential equation, involving functions of one independent variable and one or more of their derivatives.
+
+\textbf{PDE}: Partial differential equation, equation involving an unknown function of more than one variable and certain of its partial derivatives.
+
+\textbf{Schwartz}: if $u$ has continuous second partial derivatives, then the order can be changed:
+$$u_{xy} = u_{yx}$$
+
+\textbf{Gradient}: of $u = u(x, y, z)$ is defined as
+$$\nabla u := (u_x, u_y, u_z)$$
+and the \textbf{Laplacian} of $u$ is
+$$\Delta u := u_{xx} + u_{yy} + u_{zz}$$
+
+\textbf{Problem}: A PDE supplemented with initial or boundary conditions. A problem is \textbf{well-posed} if it satisfies the following criteria:
+\begin{enumerate}
+  \item The problem has a solution (existence).
+  \item The solution is unique (uniqueness).
+  \item A small change in the equation and/or in the side conditions gives rise to a small change in the solution (stability).
+\end{enumerate}
+If one or more of these conditions do not hold, then the problem is said to be \textbf{ill-posed}.
+
+\subsection{Classification properties of PDEs}
+\textbf{order} of a PDE is the order of the highest order partial derivative of the unknown appearing within it.
+
+$\implies u_{xyz} = xy^2$ has order 2 
+
+\textbf{a linear} PDE is of the form
+$$
+a^{(0)}u + \sum_{i_1=1}^n a^{(1)}_{i_1} u_{x_{i_1}}
++ \sum_{i_1,i_2=1}^n a^{(2)}_{i_1,i_2} u_{x_{i_1}x_{i_2}} + \dots
+=:\mathcal{L}[u] = f(\mathbf{x})
+$$
+
+$\implies uu_x=2$ is not linear, but $u_{tt} = u_{xxxxx}$ is
+
+\textbf{homogenous} PDEs have $f(x)=0$
+
+A PDE is \textbf{quasilinear} if it is linear in its highest order derivative term.
+
+$\implies uu_x + u^2u_y + u = e^4$ is quasilinear (of first order)
