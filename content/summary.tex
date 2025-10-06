@@ -38,3 +38,60 @@ $\implies uu_x=2$ is not linear, but $u_{tt} = u_{xxxxx}$ is
 A PDE is \textbf{quasilinear} if it is linear in its highest order derivative term.
 
 $\implies uu_x + u^2u_y + u = e^4$ is quasilinear (of first order)
+
+\subsection{Strong and weak solutions}
+\begin{itemize}
+    \item \textbf{Strong solution (or classical solution):} All derivatives that appear in the PDE exist and are continuous on the whole domain of the PDE.
+    \item \textbf{Weak solution:} There are points in the domain where the derivatives do not exist (or are not continuous). A weak solution cannot directly be plugged into the equation.
+\end{itemize}
+
+\section{Method of Characteristics (MoC)}
+
+An approach to solving 1st order quasilinear PDEs.
+
+\[
+\begin{cases}
+a \cdot u_x + b \cdot u_y = c(x,y,u) \\
+u(x_0,y_0) = \tilde{u}_0
+\end{cases}
+\quad
+\text{1) Initial curve: } \Gamma(s) =
+\begin{pmatrix}
+x_0(s) \\
+y_0(s) \\
+\tilde{u}_0(s)
+\end{pmatrix}
+\]
+
+2) The \textit{characteristic equations} of the PDE are given by:
+
+\[
+\begin{array}{c|c}
+\textbf{ODEs} & \textbf{Initial conditions} \\ \hline
+\dfrac{d}{dt} x(t,s) = a(x,y,u) & x(0,s) = x_0(s) \\[1em]
+\dfrac{d}{dt} y(t,s) = b(x,y,u) & y(0,s) = y_0(s) \\[1em]
+\dfrac{d}{dt} \tilde{u}(t,s) = c(x,y,u) & \tilde{u}(0,s) = \tilde{u}_0(s)
+\end{array}
+\]
+
+The resulting \textit{characteristic curves} span the solution surface.
+
+3) Find \(t(x,y)\) and \(s(x,y)\), then:  
+\[
+u(x,y) = \tilde{u}(t(x,y), s(x,y))
+\]
+
+\subsection{Existence and uniqueness}
+
+\section{Conservation laws and shock waves}
+
+\section{One dimensional wave equation}
+
+\section{Seperation of variables}
+
+\section{Elliptic equations}
+
+\section{Maximum principles}
+
+\section{Laplace's equation in rectangular and circular domains}
+
