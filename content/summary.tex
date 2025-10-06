@@ -39,7 +39,13 @@ A PDE is \textbf{quasilinear} if it is linear in its highest order derivative te
 
 $\implies uu_x + u^2u_y + u = e^4$ is quasilinear (of first order)
 
-\section{Method of characteristics}
+\subsection{Strong and weak solutions}
+\begin{itemize}
+    \item \textbf{Strong solution (or classical solution):} All derivatives that appear in the PDE exist and are continuous on the whole domain of the PDE.
+    \item \textbf{Weak solution:} There are points in the domain where the derivatives do not exist (or are not continuous). A weak solution cannot directly be plugged into the equation.
+\end{itemize}
+
+\section{Method of Characteristics (MoC)}
 Reduces first order / quasilinear PDEs by reducing them to a system of ODEs using geometrical interpretation.
 
 The first two equations ($x_0(s),y_0(s)$) of the initial curve lie on the xy-plane. We use $s,t$ as a sort of "coordinate transformation"
@@ -94,3 +100,17 @@ y=t;\quad\quad x=se^t = se^y \iff s=xe^{-y};\quad\quad \tilde{u}(t) = t+f(s) = y
 $$
 
 Thus, the result is $u(x,y) = y + f(xe^{-y})$.
+
+\subsection{Existence and uniqueness}
+
+\section{Conservation laws and shock waves}
+
+\section{One dimensional wave equation}
+
+\section{Seperation of variables}
+
+\section{Elliptic equations}
+
+\section{Maximum principles}
+
+\section{Laplace's equation in rectangular and circular domains}
