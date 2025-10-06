@@ -42,16 +42,19 @@ $\implies uu_x + u^2u_y + u = e^4$ is quasilinear (of first order)
 \section{Method of characteristics}
 Reduces first order / quasilinear PDEs by reducing them to a system of ODEs using geometrical interpretation.
 
+The first two equations ($x_0(s),y_0(s)$) of the initial curve lie on the xy-plane. We use $s,t$ as a sort of "coordinate transformation"
 \begin{recipe}[solve PDE using method of characteristics]
 Our PDE has the form $a(x,y,u)u_x + b(x,y,u)u_y = c(x,y,u)$
 \begin{enumerate}
  \item define $a$, $b$, $c$
- \item define $\varGamma(s) = (x_0(s), y_0(s), u_0(s)) = (\dots)$ based on the side condition
+ \item define \textbf{initial curve} based on the side condition(s)
+ $$\varGamma(s) = (x_0(s), y_0(s), \tilde{u}_0(s)) = (\dots)$$
  \item solve the ODEs, using the initial values from (2):
- $$\frac{dx}{dt}=a \quad \frac{dy}{dt}=b \quad \frac{du}{dt}=c$$
+ $$\frac{dx}{dt}=a \quad \frac{dy}{dt}=b \quad \frac{d\tilde{u}}{dt}=c$$
  \item The ODEs form a system of equations. Rearrange them according to t and s, then substitute the result into u(t) to obtain u(x, y).
 \end{enumerate}
 \end{recipe}
+
 
 \textbf{Example} (Method of characteristics)
 $$xu_x+u_y = 1 \quad u(x,0)=f(x)$$
@@ -64,13 +67,13 @@ a\\b\\c
 \end{pmatrix} = \begin{pmatrix}
 x\\1\\1
 \end{pmatrix} \quad \varGamma(s) = \begin{pmatrix}
-x_{0}(s)\\y_{0}(s) \\u_{0}(s)
+x_{0}(s)\\y_{0}(s) \\\tilde{u}_{0}(s)
 \end{pmatrix} = \begin{pmatrix}
 s\\0\\f(s)
 \end{pmatrix}
 $$
 
-$\to$ solve ODSs
+$\to$ solve ODEs
 
 \begin{align*}
  \frac{dx}{dt} = x & &  \implies & x(t) = C_{1}e^t \\
@@ -79,15 +82,15 @@ $\to$ solve ODSs
 \frac{dy}{dt} = 1 &  & \implies  & y(t) = t+C_{2} \\
 \text{initial condition:}  &  &  & y(0) = C_{2} \stackrel{!}{=} 0 \\
  &  & \implies & y(t) = t \\
-\frac{du}{dt} = 1 &  & \implies & u(t) = t+C_{3} \\
-\text{initial condition:} &  &  & u(0) = C_{3} \stackrel{!}{=} f(s) \\
- &  & \implies & u(t) = t + f(s)
+\frac{d\tilde{u}}{dt} = 1 &  & \implies & \tilde{u}(t) = t+C_{3} \\
+\text{initial condition:} &  &  & \tilde{u}(0) = C_{3} \stackrel{!}{=} f(s) \\
+ &  & \implies & \tilde{u}(t) = t + f(s)
 \end{align*}
 
 $\to$ rearrange to x,y
 
 $$
-y=t;\quad\quad x=se^t = se^y \iff s=xe^{-y};\quad\quad u(t) = t+f(s) = y + f(xe^{-y})
+y=t;\quad\quad x=se^t = se^y \iff s=xe^{-y};\quad\quad \tilde{u}(t) = t+f(s) = y + f(xe^{-y})
 $$
 
 Thus, the result is $u(x,y) = y + f(xe^{-y})$.
