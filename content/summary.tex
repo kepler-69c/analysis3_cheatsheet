@@ -45,6 +45,8 @@ $\implies uu_x + u^2u_y + u = e^4$ is quasilinear (of first order)
     \item \textbf{Weak solution:} There are points in the domain where the derivatives do not exist (or are not continuous). A weak solution cannot directly be plugged into the equation.
 \end{itemize}
 
+$\to$ Weak solutjions are NOT unique.
+
 \section{Method of Characteristics (MoC)}
 Reduces first order / quasilinear PDEs by reducing them to a system of ODEs using geometrical interpretation.
 
@@ -104,6 +106,19 @@ Thus, the result is $u(x,y) = y + f(xe^{-y})$.
 \subsection{Existence and uniqueness}
 
 \section{Conservation laws and shock waves}
+
+\textbf{conservation law}
+$$u_y + f(u)_x = 0$$
+
+\textbf{shock wave}: forms when characteristics intersect. Speed given by \textbf{Rankine-Hugoniot}:
+$$\sigma'(y) = \frac{f(u^+) - f(u^-)}{u^+ - u^-}$$
+
+\hl{TODO} how to calculate intersection point?
+
+\textbf{entropy condition}: A weak solution satifies the entropy condition of characteristics only enter shocks but do not emanate from them This means:
+$$c(u^+) < \sigma' < c(u^-)$$
+
+(this condition ensures uniqueness of weak solution)
 
 \section{One dimensional wave equation}
 
