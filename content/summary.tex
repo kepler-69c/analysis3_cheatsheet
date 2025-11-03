@@ -121,7 +121,44 @@ $$c(u^+) < \sigma' < c(u^-)$$
 (this condition ensures uniqueness of weak solution)
 
 \section{One dimensional wave equation}
+Hyperbolic 2nd order differential equation of the form:
+$$
+\begin{cases}
+ u_{tt} - c^2u_{xx} &= F(x,t) \\
+ u(x,0) &= f(x) \\
+ u_{t}(x,0) &= g(x)
+\end{cases}
+$$
 
+\subsection{homogenous wave equation ($F(x,t)=0$)}
+Solution consists of a backwards-moving wave $F$ and forward-moving wave $G$:
+$$
+u(x,t) = F(x+ct) + G(x-ct)
+$$
+The solution can be calculated using d'Alembert's (short) formula:
+$$
+u(x,t) = \frac{f(x+ct) + f(x-ct)}{2} + \frac{1}{2c} \int_{x-ct}^{x+ct}g(y)\ dy
+$$
+
+\subsection{non-homogenous wave equation}
+D'Alembert's formula for non-homogenous wave equations:
+$$
+u(x,t) = \frac{f(x+ct) + f(x-ct)}{2} + \frac{1}{2c} \int_{x-ct}^{x+ct}g(y)\ dy + \frac{1}{2c}\int_0^t \int_{x-c(t-\tau)}^{x+c(t-\tau)} F(\xi, \tau) \ d\xi d\tau
+$$
+
+\begin{recipe}[trick: converting to homogenous wave equation]
+For a non-homogenous wave equation $u$, define $w:= u-v$, $w$ homogenous:
+$$
+\begin{cases}
+w_{tt}-c^2 u_{xx}  & =0 \\
+w(x,0) = u(x,0)-v(x,0)  & = f(x) - v(x,0) \\
+w_{t}(x,0) = u_{t}(x,0) - v_{t}(x,0)  & = g(x) - v_{t}(x,0)
+\end{cases}
+$$
+After finding $v$, we can now solve $w$ using d'Alembert's simple formula.
+
+\hl{TODO}: How to find $v$?
+\end{recipe}
 \section{Seperation of variables}
 
 \section{Elliptic equations}
