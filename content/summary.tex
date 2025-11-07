@@ -20,9 +20,7 @@ $$\Delta u := u_{xx} + u_{yy} + u_{zz}$$
 If one or more of these conditions do not hold, then the problem is said to be \textbf{ill-posed}.
 
 \subsection{Classification properties of PDEs}
-\textbf{order} of a PDE is the order of the highest order partial derivative of the unknown appearing within it.
-
-$\implies u_{xyz} = xy^2$ has order 2 
+\textbf{order} of a PDE is the order of the highest order partial derivative of the unknown appearing within it. $\implies u_{xyz} = xy^2$ has order 2
 
 \textbf{a linear} PDE is of the form
 $$
@@ -107,8 +105,8 @@ Thus, the result is $u(x,y) = y + f(xe^{-y})$.
 
 \section{Conservation laws and shock waves}
 
-\textbf{conservation law}
-$$u_y + f(u)_x = 0$$
+\textbf{conservation law} ($f:\mathbb{R}\to\mathbb{R}$ flux function, $c(u)=f'(u)$)
+$$u_y + f(u)_x = 0 \quad \text{or} \quad u_y + c(u)u_x = 0$$
 
 \textbf{shock wave}: forms when characteristics intersect. Speed given by \textbf{Rankine-Hugoniot}:
 $$\sigma'(y) = \frac{f(u^+) - f(u^-)}{u^+ - u^-}$$
@@ -117,6 +115,12 @@ $$\sigma'(y) = \frac{f(u^+) - f(u^-)}{u^+ - u^-}$$
 $$
 y_c = \inf\left\{ \frac{-1}{c'(u_0(s))u_0'(s)}: \quad s\in \mathbb{R},\ c'(u_{0}(s))u_{0}'(s)<0 \right\}
 $$
+
+A function is a weak solution $\iff$ \textbf{integral formulation} of conservation laws holds $\forall a<b,\ y_1<y_2$:
+$$
+\int_{a}^{b} u(x, y_{2}) \,dx - \int_{a}^{b} u(x, y_{1}) \,dx = - \int_{y_{1}}^{y_{2}} \left[ f(u(b, y)) - f(u(a, y)) \right] \,dy
+$$
+
 \textbf{entropy condition}: A weak solution satifies the entropy condition of characteristics only enter shocks but do not emanate from them This means:
 $$c(u^+) < \sigma' < c(u^-)$$
 
