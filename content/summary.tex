@@ -166,6 +166,50 @@ After finding $v$, we can now solve $w$ using d'Alembert's simple formula.
 \hl{TODO}: How to find $v$?
 \end{recipe}
 \section{Seperation of variables}
+Can be applied to "nearly all" linear 2nd-order PDEs
+
+PDE $\leadsto$ 2 ODE systems $\leadsto$ boundary conditions to find eigenvalues $\lambda$, eigenfunctions $\sin/\hdots \leadsto$ initial condition
+
+\begin{recipe}[Apply seperation of variables]
+Assuming a product solution $u(x,t) = X(x)T(t)$
+\begin{enumerate}
+ \item substite into PDE, separating variables
+ \item set both sides = const. $-\lambda \leadsto$ two ODEs:
+
+  $$\text{\hl{TODO}}$$
+
+ \item solve each ODE individually for $X$ and $T$
+ \item apply boundary conditions \hl{TODO}: how?
+ \item apply initial condition to get coefficients of resulting (fourier series) solution \hl{TODO}: maybe add example
+\end{enumerate}
+\end{recipe}
+
+\hl{TODO}: \textbf{are the following formulas relevant?}
+
+General solution for heat equation with Dirichlet b.c.
+
+\hl{TODO}
+
+General solution for heat equation with Neumann b.c.
+
+\hl{TODO}
+
+General solution for wave equation with Neumann b.c.
+$$
+u(x,t) = \sum_{n=0}^{+\infty} X_n(x)T_n(t) = \frac{A_0+B_0 t}{2} + \sum_{n=1}^{+\infty} cos(\frac{n\pi x}{L}\left[ A_n cos(\frac{n\pi c}{L}t) + sin(\frac{n\pi c}{L}t)B_n \right])
+$$
+
+where $\frac{n\pi}{L}=\lambda$, $\cos$ comes from Neumann / $X(x)$, $[\dots]$ from $T(t)$
+
+\subsection{Boundary Conditions}
+\begin{itemize}
+    \item Dirichlet: $u(0,t) = u(L,t) = 0$.
+    \item Neumann: $u_x(0,t) = u_x(L,t) = 0$. ("no flux")
+    \item Mixed type, or Robin:
+    $$\alpha_0 u(0,t) + \beta_0 u_x(0,t) = \gamma_0, \quad \alpha_L u(L,t) + \beta_L u_x(L,t) = \gamma_L$$
+\end{itemize}
+
+\warning{Dirichlet $\implies$ only $\sin$ in general solution; Neumann $\implies$ only $\cos$}
 
 \section{Elliptic equations}
 
