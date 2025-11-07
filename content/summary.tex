@@ -126,6 +126,27 @@ $$c(u^+) < \sigma' < c(u^-)$$
 
 (this condition ensures uniqueness of weak solution)
 
+\subsection{2nd order linear PDE classification}
+\hl{TODO}: where to put this subsection?
+
+All second-order linear PDEs can be written in the general form:
+$$
+L[u] = a u_{xx} + 2b u_{xy} + c u_{yy} + d u_x + e u_y + f u = g.
+$$
+Where $a, b, c, d, e, f, g$ are all functions of $(x, y)$ but not $u$.
+
+The \textbf{discriminant} $\delta(x_0, y_0)$ is defined as
+$$
+\delta(x, y) := b^2 - a c.
+$$
+
+The PDE is classified based on the sign of the discriminant $\delta$:
+\begin{itemize}
+    \item If $\delta > 0$: PDE is \textbf{hyperbolic} ($\sim$ Wave equation)
+    \item If $\delta = 0$: PDE is \textbf{parabolic} ($\sim$ Heat equation)
+    \item If $\delta < 0$: PDE is \textbf{elliptic} ($\sim$ Laplace equation)
+\end{itemize}
+
 \section{One dimensional wave equation}
 Hyperbolic 2nd order differential equation of the form:
 $$
