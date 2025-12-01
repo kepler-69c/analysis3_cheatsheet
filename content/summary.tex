@@ -180,6 +180,9 @@ $$
 \end{cases}
 $$
 
+\warning{If $f,g,F$ are odd/even/T-periodic in $x$, then $u(x,t)$ is odd/even/T-periodic, too (see 6.3/7.2)}
+\hl{TODO}: What are the requirements for d'Alembert's formula?
+
 \subsection{homogenous wave equation ($F(x,t)=0$)}
 Solution consists of a backwards-moving wave $F$ and forward-moving wave $G$:
 $$
@@ -257,41 +260,74 @@ If the initial data $f_{x}$, $g_{x}$ and the inhomogenity $F_{x,t}$ are even/odd
 
 \hl{TODO}: \textbf{Add short explanation (with picture from lecture notes)}
 
-\section{Seperation of variables}
+\section{Separation of variables}
 Can be applied to "nearly all" linear 2nd-order PDEs
 
 PDE $\leadsto$ 2 ODE systems $\leadsto$ boundary conditions to find eigenvalues $\lambda$, eigenfunctions $\sin/\hdots \leadsto$ initial condition
 
-\begin{recipe}[Apply seperation of variables]
-Assuming a product solution $u(x,t) = X(x)T(t)$
+\begin{recipe}[Separation of variables for heat/wave equation]
 \begin{enumerate}
- \item substite into PDE, separating variables
- \item set both sides = const. $-\lambda \leadsto$ two ODEs:
+ \item separation of variables to get two ODEs
 
-  $$\text{\hl{TODO}}$$
+ Substitute $u(x,t) = X(x)T(t)$ into PDE, transform to $\frac{X^{(n)}(x)}{X(x)} = \frac{T^{(m)}(t)}{T(t)} = -\lambda$
 
- \item solve each ODE individually for $X$ and $T$
- \item apply boundary conditions \hl{TODO}: how?
- \item apply initial condition to get coefficients of resulting (fourier series) solution \hl{TODO}: maybe add example
-\end{enumerate}
+ ODEs: $X^{(n)}(x) + \lambda X(x) = 0 \quad T^{(m)}(t) + \lambda T(t) = 0$
+
+ \item solve ODEs
+ \item use \textbf{boundary conditions} as IVP for PDEs
+ \item get general solution by superposition
+
+ $$u(x,t) = \sum T_n(t) \cdot X_n(x)$$
+
+ \item impose \textbf{initial conditions} to get coefficients of resulting (fourier series) solution\end{enumerate}
 \end{recipe}
 
-\hl{TODO}: \textbf{are the following formulas relevant?}
+\subsection{general solutions}
 
-General solution for heat equation with Dirichlet b.c.
+\begin{itemize}
+ \item $\lambda_n = \left( \frac{n \pi}{L} \right)^2$
+ \item eigenfunctions: Dirichlet $\to$ $\sin(\frac{n \pi}{L}x)$, Neumann $\to$ $cos(\frac{n \pi}{L}x)$
+ \item temporal part: heat $\to$ $e^{-\lambda_n t}$, wave $\to$ $A_n\cos(\sqrt{\lambda_n} t) + B_n\sin(\sqrt{\lambda_n} t)$
+\end{itemize}
 
-\hl{TODO}
 
-General solution for heat equation with Neumann b.c.
-
-\hl{TODO}
-
-General solution for wave equation with Neumann b.c.
+general solution, heat eq., Dirichlet bc.
 $$
-u(x,t) = \sum_{n=0}^{+\infty} X_n(x)T_n(t) = \frac{A_0+B_0 t}{2} + \sum_{n=1}^{+\infty} cos(\frac{n\pi x}{L}\left[ A_n cos(\frac{n\pi c}{L}t) + sin(\frac{n\pi c}{L}t)B_n \right])
+u(x,t)=\sum_{n=1}^{\infty} b_n\,e^{-k(n\pi/L)^2 t}\,
+\sin\!\left(\frac{n\pi x}{L}\right)
 $$
 
-where $\frac{n\pi}{L}=\lambda$, $\cos$ comes from Neumann / $X(x)$, $[\dots]$ from $T(t)$
+general solution, heat eq., Neumann bc.
+$$
+u(x,t)=a_0+\sum_{n=1}^{\infty} a_n\,e^{-k(n\pi/L)^2 t}\,
+\cos\!\left(\frac{n\pi x}{L}\right)
+$$
+
+
+general solution, wave eq., dirichlet bc.
+$$
+u(x,t)=\sum_{n=1}^{\infty}
+\sin\!\left(\frac{n\pi x}{L}\right)
+\left[
+A_n\cos\!\left(\frac{n\pi c}{L}t\right)
++
+B_n\sin\!\left(\frac{n\pi c}{L}t\right)
+\right]
+$$
+
+general solution, wave eq., Neumann bc.
+$$
+u(x,t)=\frac{A_0+B_0 t}{2}+
+\sum_{n=1}^{\infty}
+\cos\!\left(\frac{n\pi x}{L}\right)
+\left[
+A_n\cos\!\left(\frac{n\pi c}{L}t\right)
++
+B_n\sin\!\left(\frac{n\pi c}{L}t\right)
+\right]
+$$
+
+\warning{Dirichlet starts at $1$, Neumann at $0$ (constant mode for heat/wave)}
 
 \subsection{Boundary Conditions}
 \begin{itemize}
@@ -300,8 +336,6 @@ where $\frac{n\pi}{L}=\lambda$, $\cos$ comes from Neumann / $X(x)$, $[\dots]$ fr
     \item Mixed type, or Robin:
     $$\alpha_0 u(0,t) + \beta_0 u_x(0,t) = \gamma_0, \quad \alpha_L u(L,t) + \beta_L u_x(L,t) = \gamma_L$$
 \end{itemize}
-
-\warning{Dirichlet $\implies$ only $\sin$ in general solution; Neumann $\implies$ only $\cos$\\(for heat/wave equation)}
 
 \subsection{non-homogenous PDEs}
 
