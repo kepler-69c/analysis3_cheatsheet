@@ -397,6 +397,27 @@ $$
 u(x_0,y_0) = \frac{1}{2\pi R}\int_{\partial B_R(x_0,y_0)} u(x(s),y(s))ds = \frac{1}{2\pi}\int_0^{2\pi} u(x_0+R\cos\vartheta,\ y_0+R\sin\vartheta) d\vartheta
 $$
 
+\subsection{Weak maximum principle}
+Let $D$ be a bounded domain and let $u(x,y) \in C^2(D)\cap C(\overline{D})$
+be harmonic in $D$. The maximum (and minimum) of $u$ in $\overline{D}$
+is achieved on the boundary $\partial D$:
+
+\[
+\max_{\overline{D}} u = \max_{\partial D} u,
+\qquad
+\min_{\overline{D}} u = \min_{\partial D} u.
+\]
+
+\subsection{Mean value principle}
+If $u$ is harmonic in $D$ and $B_R(x_0,y_0)\subset D$, then
+\[
+u(x_0,y_0)
+= \frac{1}{2\pi R} \int_{\partial B_R(x_0,y_0)} u\,ds
+= \frac{1}{2\pi} \int_0^{2\pi}
+u(x_0 + R\cos\theta,\; y_0 + R\sin\theta)\, d\theta .
+\]
+
+
 \section{Laplace's equation in rectangular and circular domains}
 
 
