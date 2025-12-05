@@ -149,6 +149,41 @@ $$c(u^+) < \sigma' < c(u^-)$$
 
 (this condition ensures uniqueness of weak solution)
 
+\subsection{Burgers' equation.}
+Models the flow of a mass with concentration $u(x,y)$ and initial
+concentration $h(x)$ at $y=0$. The flow speed depends on the concentration.
+
+\[
+\begin{cases}
+u_y + u\,u_x = 0,\\[2mm]
+u(x,0) = h(x),
+\end{cases}
+\qquad
+c(u) = u, \qquad
+f(u) = \tfrac12 u^2 .
+\]
+
+
+\subsection{Notion of weak solutions}
+Let $f$ be the flux. The integral formulation of conservation laws
+(also valid when $u$ is not smooth on the whole domain) is:
+\[
+\int_a^b \bigl(u(x,y_2) - u(x,y_1)\bigr)\,dx
+= - \int_{y_1}^{y_2} \bigl[f(u(b,y)) - f(u(a,y))\bigr]\,dy .
+\]
+
+Let $D$ be the domain of $u(x,y)$, and suppose $D$ is divided into 
+subdomains $D_i$ such that $u$ is smooth on each $D_i$.
+
+\begin{itemize}
+    \item $u(x,y)$ is a \textbf{weak solution} on 
+    $D = \bigcup_{i=1}^n D_i$ if it is smooth on each subdomain $D_i$ 
+    and satisfies the integral conservation law on $D$.
+    \item The boundaries between the subdomains $D_i$ are curves called 
+    \textbf{shocks}.
+\end{itemize}
+
+
 \subsection{2nd order linear PDE classification}
 \hl{TODO}: where to put this subsection?
 
