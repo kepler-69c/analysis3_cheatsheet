@@ -506,6 +506,7 @@ $$
 
 
 \section{Laplace's equation in rectangular and circular domains}
+\subsection{Neumann problem with rectangular domain}
 
 \noindent
 \begin{minipage}{0.49\columnwidth}
@@ -519,3 +520,97 @@ $$
     \centering
     \includegraphics[width=\columnwidth]{img/neumann_rectangular_problem.png}
 \end{minipage}
+
+
+\subsection{Dirichlet problem with rectangular domain}
+\begin{minipage}{0.49\columnwidth}
+\[
+\begin{cases}
+\Delta u = 0
+    & (x,y) \in (a,b) \times (c,d),\\
+u(a,y) = f(y)
+    & (x,y) \in \{a\} \times [c,d],\\
+u(b,y) = g(y)
+    & (x,y) \in \{b\} \times [c,d],\\
+u(x,c) = h(x)
+    & (x,y) \in [a,b] \times \{c\},\\
+u(x,d) = k(x)
+    & (x,y) \in [a,b] \times \{d\}.
+\end{cases}
+\]
+\end{minipage}%
+\hfill
+\begin{minipage}{0.50\columnwidth}
+\centering
+\raisebox{-0.5\height}{%
+    \includegraphics[width=\columnwidth]{img/splitting_of_laplacian_rectangular_domain.png}
+}
+\end{minipage}
+
+
+To solve it, we split the problem into two subproblems \(u = u_1 + u_2\):
+
+\[
+\begin{cases}
+\Delta u_1 = 0,\\
+u_1(a,y) = f(y),\\
+u_1(b,y) = g(y),\\
+u_1(x,c) = 0,\\
+u_1(x,d) = 0,
+\end{cases}
+\qquad
+\begin{cases}
+\Delta u_2 = 0,\\
+u_2(a,y) = 0,\\
+u_2(b,y) = 0,\\
+u_2(x,c) = h(x),\\
+u_2(x,d) = k(x).
+\end{cases}
+\]
+
+Separation of variables gives two ODEs for \(u_1\) (for \(u_2\) switch \(x\) and \(y\)):
+
+\[
+X''(x) - \lambda X(x) = 0,
+\qquad
+\begin{cases}
+Y''(y) + \lambda Y(y) = 0,\\
+Y(c) = Y(d) = 0.
+\end{cases}
+\]
+
+---
+
+1. The general solution for \(u_1\) is:
+
+\[
+u_1(x,y)
+= \sum_{n=1}^{\infty}
+\sin\!\left( \frac{n\pi}{d-c} (y-c) \right)
+\left[
+A_n \sinh\!\left( \frac{n\pi}{d-c} (x-a) \right)
++
+B_n \sinh\!\left( \frac{n\pi}{d-c} (x-b) \right)
+\right].
+\]
+
+2. The general solution for \(u_2\) is:
+
+\[
+u_2(x,y)
+= \sum_{n=1}^{\infty}
+\sin\!\left( \frac{n\pi}{b-a} (x-a) \right)
+\left[
+C_n \sinh\!\left( \frac{n\pi}{b-a} (y-c) \right)
++
+D_n \sinh\!\left( \frac{n\pi}{b-a} (y-d) \right)
+\right].
+\]
+
+---
+
+3. Use the boundary conditions to determine all coefficients and:
+
+\[
+u(x,y) = u_1(x,y) + u_2(x,y).
+\]
