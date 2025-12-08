@@ -317,6 +317,8 @@ PDE $\leadsto$ 2 ODE systems $\leadsto$ boundary conditions to find eigenvalues 
  \item impose \textbf{initial conditions} to get coefficients of resulting (fourier series) solution\end{enumerate}
 \end{recipe}
 
+\hl{TODO}: add $\lambda$s for general solutions? e.g. $\lambda = n^2\pi^2$
+
 \subsection{general solutions}
 
 \begin{itemize}
@@ -400,3 +402,15 @@ $$
 
 \section{Laplace's equation in rectangular and circular domains}
 
+\noindent
+\begin{minipage}{0.49\columnwidth}
+    neumann compatibility condition:
+    $$
+    \int_c^d g - \int_c^d f + \int_a^b k - \int_a^b h \stackrel{!}{=} 0
+    $$
+\end{minipage}%
+\hfill
+\begin{minipage}{0.49\columnwidth}
+    \centering
+    \includegraphics[width=\columnwidth]{img/neumann_rectangular_problem.png}
+\end{minipage}
