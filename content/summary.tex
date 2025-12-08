@@ -319,7 +319,100 @@ PDE $\leadsto$ 2 ODE systems $\leadsto$ boundary conditions to find eigenvalues 
 
 \hl{TODO}: add $\lambda$s for general solutions? e.g. $\lambda = n^2\pi^2$
 
-\subsection{general solutions}
+\subsection{General solutions}
+
+\begin{table}[H]
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+
+\begin{tabular}{|m{0.02\linewidth}|m{0.31\linewidth}|m{0.57\linewidth}|}
+\hline
+\textbf{BC}
+& \textbf{Heat $u_t = k u_{xx}$}
+& \textbf{Wave $u_{tt} = c^2 u_{xx}$}
+\\ \hline
+
+\textbf{D}\\[-3pt]
+&
+$u=\displaystyle\sum_{n=1}^{\infty} b_n e^{-k(\frac{n\pi}{L})^2 t}\sin\!\left(\tfrac{n\pi x}{L}\right)$
+&
+$\displaystyle
+u=\sum_{n=1}^{\infty}
+\sin\!\left(\tfrac{n\pi x}{L}\right)
+\!\left[
+A_n\cos\!\left(\tfrac{n\pi c}{L}t\right)+
+B_n\sin\!\left(\tfrac{n\pi c}{L}t\right)
+\right]
+$
+\\ \hline
+
+\textbf{N}\\[-3pt]
+&
+$u=a_0 + \displaystyle\sum_{n=1}^{\infty}
+a_n e^{-k(\frac{n\pi}{L})^2 t}\cos\!\left(\tfrac{n\pi x}{L}\right)$
+&
+$\displaystyle
+u=A_0+
+\sum_{n=1}^{\infty}
+\cos\!\left(\tfrac{n\pi x}{L}\right)
+\!\left[
+A_n\cos\!\left(\tfrac{n\pi c}{L}t\right)+
+B_n\sin\!\left(\tfrac{n\pi c}{L}t\right)
+\right]
+$
+\\ \hline
+
+\textbf{DN}\\[-3pt]
+&
+$X_n=\sin\!\left(\tfrac{(n-\tfrac12)\pi x}{L}\right)\newline
+u=\displaystyle\sum_{n=1}^{\infty}
+c_n e^{-k((n-\tfrac12)\frac{\pi}{L})^2 t} X_n$
+&
+$\displaystyle
+u=\sum_{n=1}^{\infty} X_n
+\left[
+A_n\cos\!\left(\tfrac{(n-\tfrac12)\pi c}{L}t\right)
++
+B_n\sin\!\left(\tfrac{(n-\tfrac12)\pi c}{L}t\right)
+\right]
+$
+\\ \hline
+
+\textbf{ND}\\[-3pt]
+&
+$X_n=\cos\!\left(\tfrac{(n-\tfrac12)\pi x}{L}\right)\newline
+u=\displaystyle\sum_{n=1}^{\infty}
+c_n e^{-k((n-\tfrac12)\frac{\pi}{L})^2 t} X_n$
+&
+$\displaystyle
+u=\sum_{n=1}^{\infty} X_n
+\left[
+A_n\cos\!\left(\tfrac{(n-\tfrac12)\pi c}{L}t\right)
++
+B_n\sin\!\left(\tfrac{(n-\tfrac12)\pi c}{L}t\right)
+\right]
+$
+\\ \hline
+
+\end{tabular}
+\end{table}
+
+\scriptsize
+\textbf{Legend (Boundary Conditions):}
+
+\begin{itemize}[leftmargin=10pt, itemsep=1pt, topsep=1pt]
+    \item \textbf{D} = Dirichlet: $u(0)=0,\;u(L)=0$
+    \item \textbf{N} = Neumann: $u_x(0)=0,\;u_x(L)=0$ ("no flux")
+    \item \textbf{DN} = Mixed: $u(0)=0,\;u_x(L)=0$
+    \item \textbf{ND} = Mixed: $u_x(0)=0,\;u(L)=0$
+    \item \textbf{R} = Robin (Mixed):
+    \[
+      \alpha_0 u(0,t) + \beta_0 u_x(0,t) = \gamma_0,\qquad
+      \alpha_L u(L,t) + \beta_L u_x(L,t) = \gamma_L
+    \]
+\end{itemize}
+
 
 \begin{itemize}
  \item $\lambda_n = \left( \frac{n \pi}{L} \right)^2$
@@ -327,52 +420,7 @@ PDE $\leadsto$ 2 ODE systems $\leadsto$ boundary conditions to find eigenvalues 
  \item temporal part: heat $\to$ $e^{-\lambda_n t}$, wave $\to$ $A_n\cos(\sqrt{\lambda_n} t) + B_n\sin(\sqrt{\lambda_n} t)$
 \end{itemize}
 
-
-general solution, heat eq., Dirichlet bc.
-$$
-u(x,t)=\sum_{n=1}^{\infty} b_n\,e^{-k(n\pi/L)^2 t}\,
-\sin\!\left(\frac{n\pi x}{L}\right)
-$$
-
-general solution, heat eq., Neumann bc.
-$$
-u(x,t)=a_0+\sum_{n=1}^{\infty} a_n\,e^{-k(n\pi/L)^2 t}\,
-\cos\!\left(\frac{n\pi x}{L}\right)
-$$
-
-
-general solution, wave eq., dirichlet bc.
-$$
-u(x,t)=\sum_{n=1}^{\infty}
-\sin\!\left(\frac{n\pi x}{L}\right)
-\left[
-A_n\cos\!\left(\frac{n\pi c}{L}t\right)
-+
-B_n\sin\!\left(\frac{n\pi c}{L}t\right)
-\right]
-$$
-
-general solution, wave eq., Neumann bc.
-$$
-u(x,t)=\frac{A_0+B_0 t}{2}+
-\sum_{n=1}^{\infty}
-\cos\!\left(\frac{n\pi x}{L}\right)
-\left[
-A_n\cos\!\left(\frac{n\pi c}{L}t\right)
-+
-B_n\sin\!\left(\frac{n\pi c}{L}t\right)
-\right]
-$$
-
 \warning{Dirichlet starts at $1$, Neumann at $0$ (constant mode for heat/wave)}
-
-\subsection{Boundary Conditions}
-\begin{itemize}
-    \item Dirichlet: $u(0,t) = u(L,t) = 0$.
-    \item Neumann: $u_x(0,t) = u_x(L,t) = 0$. ("no flux")
-    \item Mixed type, or Robin:
-    $$\alpha_0 u(0,t) + \beta_0 u_x(0,t) = \gamma_0, \quad \alpha_L u(L,t) + \beta_L u_x(L,t) = \gamma_L$$
-\end{itemize}
 
 \subsection{non-homogenous PDEs}
 
