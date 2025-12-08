@@ -292,8 +292,52 @@ If the initial data $f_{x}$, $g_{x}$ and the inhomogenity $F_{x,t}$ are even/odd
 
 
 \section{Domain of dependence and region of influence}
+\vspace{-10pt}
+\begin{table}[H]
+\centering
+\begin{tabular}{c c}
+\includegraphics[width=0.20\linewidth]{img/region_of_influence.png}
+&
+\includegraphics[width=0.20\linewidth]{img/characteristictriangle.png}
+\\
+\scriptsize Region of influence
+&
+\scriptsize Characteristic triangle (domain of dependence)
+\end{tabular}
+\end{table}
+\scriptsize
 
-\hl{TODO}: \textbf{Add short explanation (with picture from lecture notes)}
+\textbf{Region of influence.}
+The region of influence of an interval $[a,b]$ consists of all points $(x,t)$
+with $t>0$ that can be affected by the initial data on $[a,b]$.
+These points satisfy
+\[
+x - ct \le b, \qquad x + ct \ge a.
+\]
+Outside this region, changes in $f$ or $g$ on $[a,b]$ do not influence the solution.
+
+\medskip
+
+\textbf{Domain of dependence.}
+The value of the solution at a point $(x_0,t_0)$ depends only on the initial data in
+\[
+[x_0 - ct_0,\; x_0 + ct_0].
+\]
+Information outside this interval cannot reach $(x_0,t_0)$.
+The lines
+\[
+x - ct = x_0 - ct_0, \qquad x + ct = x_0 + ct_0
+\]
+form the boundary of the \emph{characteristic triangle}
+$\Delta_{(x_0,t_0)}$.
+
+\medskip
+
+\textbf{Smoothness.}
+If the initial data is smooth on $[x_0 - ct_0,\; x_0 + ct_0]$, then the solution is smooth
+inside the characteristic triangle $\Delta_{(x_0,t_0)}$.
+
+
 
 \section{Separation of variables}
 Can be applied to "nearly all" linear 2nd-order PDEs
@@ -317,9 +361,9 @@ PDE $\leadsto$ 2 ODE systems $\leadsto$ boundary conditions to find eigenvalues 
  \item impose \textbf{initial conditions} to get coefficients of resulting (fourier series) solution\end{enumerate}
 \end{recipe}
 
-\hl{TODO}: add $\lambda$s for general solutions? e.g. $\lambda = n^2\pi^2$
-
 \subsection{General solutions}
+
+\vspace{-15pt}
 
 \begin{table}[H]
 \scriptsize
@@ -394,23 +438,36 @@ B_n\sin\!\left(\tfrac{(n-\tfrac12)\pi c}{L}t\right)
 \right]
 $
 \\ \hline
-
 \end{tabular}
 \end{table}
-
+\vspace{-10pt}
 \scriptsize
 \textbf{Legend (Boundary Conditions):}
 
-\begin{itemize}[leftmargin=10pt, itemsep=1pt, topsep=1pt]
-    \item \textbf{D} = Dirichlet: $u(0)=0,\;u(L)=0$
-    \item \textbf{N} = Neumann: $u_x(0)=0,\;u_x(L)=0$ ("no flux")
-    \item \textbf{DN} = Mixed: $u(0)=0,\;u_x(L)=0$
-    \item \textbf{ND} = Mixed: $u_x(0)=0,\;u(L)=0$
-    \item \textbf{R} = Robin (Mixed):
+\begin{itemize}[leftmargin=10pt, itemsep=0pt, topsep=0pt]
+
+    \item \textbf{D} (Dirichlet): $u(0,t)=0,\;u(L,t)=0$
+    \hspace*{12pt}$X_n(x)=\sin\!\left(\tfrac{n\pi x}{L}\right)$
+    \hspace*{12pt}$\lambda_n=\left(\tfrac{n\pi}{L}\right)^2$
+
+    \item \textbf{N} (Neumann): $u_x(0,t)=0,\;u_x(L,t),t=0$
+    \hspace*{12pt}$X_n(x)=\cos\!\left(\tfrac{n\pi x}{L}\right)$
+    \hspace*{12pt}$\lambda_n=\left(\tfrac{n\pi}{L}\right)^2$
+
+    \item \textbf{DN} (Mixed): $u(0,t)=0,\;u_x(L,t)=0$
+    \hspace*{12pt}$X_n(x)=\sin\!\left(\tfrac{(n-\tfrac12)\pi x}{L}\right)$
+    \hspace*{12pt}$\lambda_n=\left(\tfrac{(n-\tfrac12)\pi}{L}\right)^2$
+
+    \item \textbf{ND} (Mixed): $u_x(0,t)=0,\;u(L,t)=0$
+    \hspace*{12pt}$X_n(x)=\cos\!\left(\tfrac{(n-\tfrac12)\pi x}{L}\right)$
+    \hspace*{12pt}$\lambda_n=\left(\tfrac{(n-\tfrac12)\pi}{L}\right)^2$
+
+    \item \textbf{R} (Robin):
     \[
-      \alpha_0 u(0,t) + \beta_0 u_x(0,t) = \gamma_0,\qquad
+      \alpha_0 u(0,t) + \beta_0 u_x(0,t) = \gamma_0, \qquad
       \alpha_L u(L,t) + \beta_L u_x(L,t) = \gamma_L
     \]
+
 \end{itemize}
 
 
