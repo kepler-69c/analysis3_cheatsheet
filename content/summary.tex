@@ -484,13 +484,48 @@ $
 
 \section{Elliptic equations}
 
+When the domain $D$ has radial symmetry, polar coordinates are useful.
+
+\[
+\begin{cases}
+x = r\cos\theta,\\
+y = r\sin\theta,
+\end{cases}
+\qquad
+A_D = \int_{0}^{\alpha}\int_{0}^{r} w(r,\theta)\, r\,dr\,d\theta.
+\]
+
+Here
+\[
+r^2 = x^2 + y^2,
+\qquad
+\sin^2\theta + \cos^2\theta = 1.
+\]
+
 $$
 \Delta u = W_{rr} + \frac 1r W_r + \frac{1}{r^2} W_{\sigma\sigma} = 0
 $$
 
-\hl{TODO} complete
+\subsection{Harmonic Functions}
 
-\hl{TODO} define harmonic functions
+$u\in C^2(\mathbb{R}^2)$ harmonic $\iff \Delta u=0$.
+
+A harmonic polynomial of degree $n$:
+\[
+P(x,y)=\sum_{i+j\le n} a_{ij}x^iy^j,
+\qquad \Delta P=0.
+\]
+
+\[
+\begin{cases}
+n=0: & 1,\\
+n=1: & x,\ y \quad (\Rightarrow ax+by),\\
+n=2: & xy,\ x^2-y^2,\\
+n=3: & x^3-3xy^2,\ y^3-3x^2y.
+\end{cases}
+\]
+
+
 
 \section{Maximum principles}
 harmonic function $u$, $\Delta u = 0$
@@ -520,6 +555,100 @@ $$
     \centering
     \includegraphics[width=\columnwidth]{img/neumann_rectangular_problem.png}
 \end{minipage}
+For the Neumann boundary condition, solutions are unique up to additive constants.
+
+\[
+\begin{cases}
+\Delta u = 0
+\quad \text{in } (a,b)\times(c,d),\\
+u_x(a,y) = f(y),\\
+u_x(b,y) = g(y),\\
+u_y(x,c) = h(x),\\
+u_y(x,d) = k(x).
+\end{cases}
+\]
+
+\textbf{Compatibility condition}
+\[
+\int_c^d (g-f)\,dy + \int_a^b (k-h)\,dx = 0.
+\]
+
+\medskip
+
+To decouple boundary conditions, add a harmonic polynomial:
+\[
+u = v + \alpha(x^2 - y^2),
+\qquad \Delta(x^2-y^2)=0.
+\]
+
+Split $v=v_1+v_2$ with
+\[
+\begin{cases}
+\Delta v_1 = 0,\\
+(v_1)_x(a,y) = f(y)+2\alpha a,\\
+(v_1)_x(b,y) = g(y)+2\alpha b,\\
+(v_1)_y(x,c) = 0,\\
+(v_1)_y(x,d) = 0,
+\end{cases}
+\qquad
+\begin{cases}
+\Delta v_2 = 0,\\
+(v_2)_x(a,y) = 0,\\
+(v_2)_x(b,y) = 0,\\
+(v_2)_y(x,c) = h(x)-2\alpha c,\\
+(v_2)_y(x,d) = k(x)-2\alpha d.
+\end{cases}
+\]
+
+Assuming
+\[
+\int_a^b h(x)\,dx = \int_a^b k(x)\,dx = 0,
+\]
+the compatibility condition for $v_1$ yields
+\[
+\alpha
+=
+\frac{1}{2(b-a)(d-c)}
+\int_c^d (f-g)\,dy.
+\]
+
+\bigskip
+
+\textbf{General solutions}
+
+\[
+\textstyle
+v_1(x,y)
+=
+A_0 x + B_0
++
+\sum_{n=1}^{\infty}
+\cos\!\left(\frac{n\pi}{d-c}(y-c)\right)
+\Bigl[
+A_n \cosh\!\left(\frac{n\pi}{d-c}(x-a)\right)
++
+B_n \cosh\!\left(\frac{n\pi}{d-c}(x-b)\right)
+\Bigr]
+\]
+
+\[
+\textstyle
+v_2(x,y)
+=
+C_0 y + D_0
++
+\sum_{n=1}^{\infty}
+\cos\!\left(\frac{n\pi}{b-a}(x-a)\right)
+\Bigl[
+C_n \cosh\!\left(\frac{n\pi}{b-a}(y-c)\right)
++
+D_n \cosh\!\left(\frac{n\pi}{b-a}(y-d)\right)
+\Bigr]
+\]
+
+\[
+u = v + \alpha(x^2-y^2).
+\]
 
 
 \subsection{Dirichlet problem with rectangular domain}
@@ -614,3 +743,107 @@ D_n \sinh\!\left( \frac{n\pi}{b-a} (y-d) \right)
 \[
 u(x,y) = u_1(x,y) + u_2(x,y).
 \]
+
+\subsection{Disks and Annuli (Polar Coordinates)}
+Let
+\[
+D = \{\, (r,\theta) \mid r \in [a,b],\ \theta \in [0,2\pi) \,\}.
+\]
+Assume a separated solution $w(r,\theta)=R(r)\Theta(\theta)$. Then
+\[
+\begin{cases}
+r^2 R''(r) + r R'(r) - \lambda R(r) = 0,\\
+\Theta''(\theta) + \lambda \Theta(\theta) = 0,\\
+\Theta(0)=\Theta(2\pi),\quad \Theta'(0)=\Theta'(2\pi).
+\end{cases}
+\]
+
+Eigenfunctions:
+\[
+\Theta_n(\theta)=A_n\cos(n\theta)+B_n\sin(n\theta),
+\qquad \lambda_n=n^2,\quad n\in\mathbb{N}_0.
+\]
+
+Radial solutions:
+\[
+R_n(r)=
+\begin{cases}
+C_0 + D_0 \log r, & n=0,\\[4pt]
+C_n r^n + D_n r^{-n}, & n\ge 1.
+\end{cases}
+\]
+
+\medskip
+
+\textbf{General solution}
+\[
+\begin{aligned}
+w(r,\theta)
+&=
+A_0 + B_0 \log r
++ \sum_{n=1}^{\infty} r^n
+\bigl[A_n\cos(n\theta)+B_n\sin(n\theta)\bigr] \\
+&\quad
++ \sum_{n=1}^{\infty} r^{-n}
+\bigl[C_n\cos(n\theta)+D_n\sin(n\theta)\bigr].
+\end{aligned}
+\]
+
+\medskip
+
+\textbf{Remark.}
+The terms $\log r$ and $r^{-n}$ are singular at $r=0$.
+They must be omitted if $0\in D$ (disk).
+
+\bigskip
+
+\subsection{Disk Sectors and Annulus Sectors}
+
+Let
+\[
+D = \{\, (r,\theta) \mid r \in [a,b],\ \theta \in [0,\gamma] \,\},
+\qquad \gamma\in(0,2\pi).
+\]
+Assume homogeneous boundary conditions
+\[
+w(r,0)=w(r,\gamma)=0.
+\]
+
+Angular problem:
+\[
+\begin{cases}
+\Theta''(\theta)+\lambda\Theta(\theta)=0,\\
+\Theta(0)=\Theta(\gamma)=0,
+\end{cases}
+\quad\Rightarrow\quad
+\Theta_n(\theta)=\sin\!\left(\frac{n\pi}{\gamma}\theta\right),
+\quad
+\lambda_n=\left(\frac{n\pi}{\gamma}\right)^2.
+\]
+
+Radial solutions:
+\[
+R_n(r)=C_n r^{n\pi/\gamma}+D_n r^{-n\pi/\gamma}.
+\]
+
+\medskip
+
+\textbf{General solution}
+\[
+w(r,\theta)
+=
+\sum_{n=1}^{\infty}
+\left[
+A_n r^{n\pi/\gamma}
++
+B_n r^{-n\pi/\gamma}
+\right]
+\sin\!\left(\frac{n\pi}{\gamma}\theta\right).
+\]
+
+\medskip
+
+\textbf{Remark.}
+The term $r^{-n\pi/\gamma}$ is singular at $r=0$.
+It must be omitted if $0\in D$ (disk sector).
+
