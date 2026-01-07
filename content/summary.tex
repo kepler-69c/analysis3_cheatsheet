@@ -296,9 +296,9 @@ If the initial data $f_{x}$, $g_{x}$ and the inhomogenity $F_{x,t}$ are even/odd
 \begin{table}[H]
 \centering
 \begin{tabular}{c c}
-\includegraphics[width=0.20\linewidth]{img/region_of_influence.png}
+\includegraphics[width=0.45\linewidth]{img/region_of_influence.png}
 &
-\includegraphics[width=0.20\linewidth]{img/characteristictriangle.png}
+\includegraphics[width=0.45\linewidth]{img/characteristictriangle.png}
 \\
 \scriptsize Region of influence
 &
@@ -340,6 +340,8 @@ inside the characteristic triangle $\Delta_{(x_0,t_0)}$.
 
 
 \section{Separation of variables}
+\hl{TODO: add compatibility condition}
+
 Can be applied to "nearly all" linear 2nd-order PDEs
 
 PDE $\leadsto$ 2 ODE systems $\leadsto$ boundary conditions to find eigenvalues $\lambda$, eigenfunctions $\sin/\hdots \leadsto$ initial condition
@@ -502,6 +504,8 @@ r^2 = x^2 + y^2,
 \sin^2\theta + \cos^2\theta = 1.
 \]
 
+\hl{TODO: add compatibility condition (6.3.5)}
+
 $$
 \Delta u = W_{rr} + \frac 1r W_r + \frac{1}{r^2} W_{\sigma\sigma} = 0
 $$
@@ -530,7 +534,7 @@ n=3: & x^3-3xy^2,\ y^3-3x^2y.
 \section{Maximum principles}
 harmonic function $u$, $\Delta u = 0$
 \begin{enumerate}
- \item \textbf{Weak maximum principle:} $D$ bounded domain, $u\in C^2(D) \cap C(\overline{D})$, $u$ harmonic $\implies \max_D u = \max_{\partial D}u$
+ \item \textbf{Weak maximum principle:} $D$ bounded domain, $u\in C^2(D) \cap C(\overline{D})$, $u$ harmonic $\implies \max_{\overline{D}} u = \max_{\partial D}u$
  \item \textbf{Strong maximum principle:} $\Delta u = 0$ in $D$ \\
        if $U$ attains the maximum inside $D\implies u$ constant
  \item \textbf{Mean-value principle:} $\Delta u = 0$, $D$ connected
