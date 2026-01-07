@@ -549,7 +549,11 @@ $$
 
 \noindent
 \begin{minipage}{0.49\columnwidth}
-    neumann compatibility condition:
+	\textbf{Compatibility condition} (necessary): Solution $\exists \iff$ net flux over boundary of domain $\Omega$ is $=0$:
+	$$
+	\int_{\partial\Omega} \frac{\partial u}{\partial \nu}~d\delta = 0
+	$$
+	for rectangle $[a,b]\times[c,d]$:
     $$
     \int_c^d g - \int_c^d f + \int_a^b k - \int_a^b h \stackrel{!}{=} 0
     $$
