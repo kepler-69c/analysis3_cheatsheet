@@ -113,8 +113,8 @@ Consider the Cauchy problem
   \end{cases}
 \]
 Assume that $\exists s_0 \in \mathbb{R}$ such that transversality cond. holds at $(0, s_0)$
-det
 \[
+\det
   \begin{pmatrix}
     \partial_{t} x(0,s_0) & \partial_{t} y(0,s_0) \\
     \partial_{s} x(0,s_0) & \partial_{s} y(0,s_0)
@@ -525,7 +525,9 @@ A harmonic polynomial of degree $n$:
 \section{Maximum principles}
 harmonic function $u$, $\Delta u = 0$
 \begin{enumerate}
-  \item \textbf{Weak maximum principle:} $D$ bounded domain, $u\in C^2(D) \cap C(\overline{D})$, $u$ harmonic $\implies \max_{\overline{D}} u = \max_{\partial D}u$
+  \item \textbf{Weak maximum principle:} $D$ bounded domain, $u\in C^2(D) \cap C(\overline{D})$, $u$ harmonic
+    $\implies \max_{\overline{D}} u = \max_{\partial D}u$ \\
+    $\implies$ maximum is the maximum of $u$ in $\overline{D}$ is achieved on the boundary $\partial D$
   \item \textbf{Strong maximum principle:} $\Delta u = 0$ in $D$ \\
     if $U$ attains the maximum inside $D\implies u$ constant
   \item \textbf{Mean-value principle:} $\Delta u = 0$, $D$ connected
