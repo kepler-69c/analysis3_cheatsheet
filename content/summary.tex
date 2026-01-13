@@ -1,15 +1,16 @@
+% content/cleanup.tex - this is the newly structured document
+
 \section{Preliminaries}
 \textbf{ODE}: Ordinary differential equation, involving functions of one independent variable and one or more of their derivatives.
 
 \textbf{PDE}: Partial differential equation, equation involving an unknown function of more than one variable and certain of its partial derivatives.
 
-\textbf{Schwartz}: if $u$ has continuous second partial derivatives, then the order can be changed:
-$$u_{xy} = u_{yx}$$
+\textbf{Schwartz}: if $u$ has continuous second partial derivatives, then the order can be changed: $u_{xy} = u_{yx}$
 
-\textbf{Gradient}: of $u = u(x, y, z)$ is defined as
-$$\nabla u := (u_x, u_y, u_z)$$
-and the \textbf{Laplacian} of $u$ is
-$$\Delta u := u_{xx} + u_{yy} + u_{zz}$$
+\begin{align*}
+  \text{For}~u = u(x, y, z): \quad  & \nabla u := (u_x, u_y, u_z) & \text{\textbf{Gradient}} \\
+  & \Delta u := u_{xx} + u_{yy} + u_{zz} & \text{\textbf{Laplacian}}
+\end{align*}
 
 \textbf{Problem}: A PDE supplemented with initial or boundary conditions. A problem is \textbf{well-posed} if it satisfies the following criteria:
 \begin{enumerate}
@@ -43,7 +44,7 @@ $\implies uu_x + u^2u_y + u = e^4$ is quasilinear (of first order)
   \item \textbf{Weak solution:} There are points in the domain where the derivatives do not exist (or are not continuous). A weak solution cannot directly be plugged into the equation.
 \end{itemize}
 
-$\to$ Weak solutjions are NOT unique.
+$\to$ Weak solutions are NOT unique.
 
 \section{Method of Characteristics (MoC)}
 Reduces first order / quasilinear PDEs by reducing them to a system of ODEs using geometrical interpretation.
@@ -84,15 +85,12 @@ $$
 $\to$ solve ODEs
 
 \begin{align*}
-  \frac{dx}{dt} = x & &  \implies & x(t) = C_{1}e^t \\
-  \text{initial condition:}  & &  & x(0) = C_{1} \stackrel{!}{=} s \\
-  &  & \implies & x(s) = se^t \\
-  \frac{dy}{dt} = 1 &  & \implies  & y(t) = t+C_{2} \\
-  \text{initial condition:}  &  &  & y(0) = C_{2} \stackrel{!}{=} 0 \\
-  &  & \implies & y(t) = t \\
-  \frac{d\tilde{u}}{dt} = 1 &  & \implies & \tilde{u}(t) = t+C_{3} \\
-  \text{initial condition:} &  &  & \tilde{u}(0) = C_{3} \stackrel{!}{=} f(s) \\
-  &  & \implies & \tilde{u}(t) = t + f(s)
+  \frac{dx}{dt} = x & &  \implies & x(t) = C_{1}e^t && \implies x(s)=se^t\\
+  & &  & x(0) = C_{1} \stackrel{!}{=} s \\
+  \frac{dy}{dt} = 1 &  & \implies  & y(t) = t+C_{2} && \implies y(t) = t\\
+  &  &  & y(0) = C_{2} \stackrel{!}{=} 0 \\
+  \frac{d\tilde{u}}{dt} = 1 &  & \implies & \tilde{u}(t) = t+C_{3} &  & \implies \tilde{u}(t) = t + f(s)\\
+  &  &  & \tilde{u}(0) = C_{3} \stackrel{!}{=} f(s)
 \end{align*}
 
 $\to$ rearrange to x,y
@@ -114,10 +112,15 @@ Consider the Cauchy problem
 \]
 Assume that $\exists s_0 \in \mathbb{R}$ such that transversality cond. holds at $(0, s_0)$
 \[
-\det
+  \det
   \begin{pmatrix}
     \partial_{t} x(0,s_0) & \partial_{t} y(0,s_0) \\
     \partial_{s} x(0,s_0) & \partial_{s} y(0,s_0)
+  \end{pmatrix} =
+  \det
+  \begin{pmatrix}
+    a & b \\
+    \partial_s x_0 & \partial_s y_0
   \end{pmatrix}
   \neq
   0
@@ -126,13 +129,20 @@ Assume that $\exists s_0 \in \mathbb{R}$ such that transversality cond. holds at
 Then there exists a unique solution u of the Cauchy problem in a neighbourhood
 of $(x_0(s_0),y_0(s_0))$
 
-\section{Conservation laws and shock waves}
+\section{Conservation Laws}
+First-order PDE describing the evolution of a density $u(x,t)$ under a flux $f(u)$:
+$\to f:\mathbb{R}\to\mathbb{R}$ flux function, $c(u)=f'(u)$
 
-\textbf{conservation law} ($f:\mathbb{R}\to\mathbb{R}$ flux function, $c(u)=f'(u)$)
 $$u_y + f(u)_x = 0 \quad \text{or} \quad u_y + c(u)u_x = 0$$
 
+where $c(u)$ represents the \textbf{characteristic speed}.
+
+\subsection{Shock Waves and Weak Solutions}
 \textbf{shock wave}: forms when characteristics intersect. Speed given by \textbf{Rankine-Hugoniot}:
 $$\sigma'(y) = \frac{f(u^+) - f(u^-)}{u^+ - u^-}$$
+
+% characteristic slope vs shock speed
+\textbf{Characteristics}: The slope of the characteristic curves is given by $\frac{dx}{dy} = c(u)$. A shock exists where characteristics with different speeds $\alpha = c(u^-)$ and $\beta = c(u^+)$ collide.
 
 \textbf{critical time} (note that $c(u)=f'(u)$):
 $$
@@ -144,7 +154,7 @@ $$
 \int_{a}^{b} u(x, y_{2}) \,dx - \int_{a}^{b} u(x, y_{1}) \,dx = - \int_{y_{1}}^{y_{2}} \left[ f(u(b, y)) - f(u(a, y)) \right] \,dy
 $$
 
-\textbf{entropy condition}: A weak solution satifies the entropy condition of characteristics only enter shocks but do not emanate from them This means:
+\textbf{entropy condition}: A weak solution satifies the entropy condition of characteristics only enter shocks but do not emanate from them. This means:
 $$c(u^+) < \sigma' < c(u^-)$$
 
 (this condition ensures uniqueness of weak solution)
@@ -182,26 +192,27 @@ subdomains $D_i$ such that $u$ is smooth on each $D_i$.
     \textbf{shocks}.
 \end{itemize}
 
-\subsection{2nd order linear PDE classification}
-\hl{TODO}: where to put this subsection?
+\section{Classification of Second Order PDEs}
+% the type of a second-order pde determines the qualitative behavior of its solutions
+General linear second-order PDE in two variables ($a-g$ functions of $(x, y)$ but not $u$):
+$$a u_{xx} + 2b u_{xy} + c u_{yy} + d u_x + e u_y + f u = g$$
 
-All second-order linear PDEs can be written in the general form:
-$$
-L[u] = a u_{xx} + 2b u_{xy} + c u_{yy} + d u_x + e u_y + f u = g.
-$$
-Where $a, b, c, d, e, f, g$ are all functions of $(x, y)$ but not $u$.
-
-The \textbf{discriminant} $\delta(x_0, y_0)$ is defined as
-$$
-\delta(x, y) := b^2 - a c.
-$$
-
-The PDE is classified based on the sign of the discriminant $\delta$:
+The classification is determined by the sign of the \textbf{discriminant} $\delta = b^2 - ac$:
 \begin{itemize}
   \item If $\delta > 0$: PDE is \textbf{hyperbolic} ($\sim$ Wave equation)
   \item If $\delta = 0$: PDE is \textbf{parabolic} ($\sim$ Heat equation)
   \item If $\delta < 0$: PDE is \textbf{elliptic} ($\sim$ Laplace equation)
 \end{itemize}
+
+% heat equation formula
+\section{Heat equation}
+\textbf{Standard form} ($k > 0$ thermal diffusivity):
+$$u_t - k u_{xx} = f(x, t)$$
+
+\textbf{Maximum Principle for the Heat Equation}:
+For a solution $u(x, t)$ on the domain $[0, L] \times [0, T]$, the maximum (and minimum) values are always attained on the \textbf{parabolic boundary} $\Gamma_T$:
+$$\Gamma_T = \{ (x, 0) : x \in [0, L] \} \cup \{ (0, t) : t \in [0, T] \} \cup \{ (L, t) : t \in [0, T] \}$$
+This implies that if $f(x, t) \le 0$, the temperature cannot exceed its initial or boundary values.
 
 \section{One dimensional wave equation}
 Hyperbolic 2nd order differential equation of the form:
@@ -213,8 +224,10 @@ $$
 \end{cases}
 $$
 
-\warning{If $f,g,F$ are odd/even/T-periodic in $x$, then $u(x,t)$ is odd/even/T-periodic, too (see 6.3/7.2)}
-\hl{TODO}: What are the requirements for d'Alembert's formula?
+\warning{$f\land g \land F$ odd/even/T-periodic in $x \implies$ $u(x,t)$ odd/even/T-periodic in $x$, too (see 6.3/7.2)}
+
+% d'Alembert requirements: f in C^2, g in C^1, F in C^1
+\textbf{Requirements}: For a classical solution, $f \in C^2(\mathbb{R})$, $g \in C^1(\mathbb{R})$, and $F \in C^1(\mathbb{R} \times [0, \infty))$.
 
 \subsection{homogenous wave equation (F(x,t)=0)}
 Solution consists of a backwards-moving wave $F$ and forward-moving wave $G$:
@@ -243,7 +256,8 @@ $$
   $$
   After finding $v$, we can now solve $w$ using d'Alembert's simple formula.
 
-  \hl{TODO}: How to find $v$?
+  % how to find v: usually a steady-state or particular solution
+  \textbf{How to find $v$}: If boundary conditions are constant $u(0, t) = A$ and $u(L, t) = B$, choose $v(x) = A + \frac{B-A}{L}x$ (the linear steady-state solution). If there is a source $F(x)$, solve $-c^2 v''(x) = F(x)$.
 \end{recipe}
 
 \textbf{Example: 1D Wave Equation on a Ring (periodic extension)}
@@ -281,11 +295,7 @@ Since \(v_1(x)=0\):
   = \tfrac{1}{4}.
 \]
 
-\subsection{Uniqueness}
-The 1D-wave equation has a unique solution
-
-\subsection{Symmetry}
-If the initial data $f_{x}$, $g_{x}$ and the inhomogenity $F_{x,t}$ are even/odd/periodic with respect to x, then the solution is even/odd/periodic with respect to x as well
+\warning{\textbf{Uniqueness} the 1D-wave equation has a unique solution.}
 
 \section{Domain of dependence and region of influence}
 \vspace{-10pt}
@@ -334,11 +344,9 @@ If the initial data is smooth on $[x_0 - ct_0,\; x_0 + ct_0]$, then the solution
 inside the characteristic triangle $\Delta_{(x_0,t_0)}$.
 
 \section{Separation of variables}
-\hl{TODO: add compatibility condition}
+% compatibility condition
+\textbf{Compatibility Conditions}: To ensure $u \in C^0(\overline{D})$, initial and boundary conditions must match at corners: $f(0) = u(0,0)$ and $f(L) = u(L,0)$. For $C^1$ or $C^2$ solutions, higher-order derivatives must be consistent.
 
-Can be applied to "nearly all" linear 2nd-order PDEs
-
-PDE $\leadsto$ 2 ODE systems $\leadsto$ boundary conditions to find eigenvalues $\lambda$, eigenfunctions $\sin/\hdots \leadsto$ initial condition
 
 \begin{recipe}[Separation of variables for heat/wave equation]
   \begin{enumerate}
@@ -349,14 +357,16 @@ PDE $\leadsto$ 2 ODE systems $\leadsto$ boundary conditions to find eigenvalues 
       ODEs: $X^{(n)}(x) + \lambda X(x) = 0 \quad T^{(m)}(t) + \lambda T(t) = 0$
 
     \item solve ODEs
-    \item use \textbf{boundary conditions} as IVP for PDEs
+    \item use \textbf{boundary conditions} to determine eigenvalues $\lambda_n$ and eigenfunctions $X_n(x)$
     \item get general solution by superposition
 
-      $$u(x,t) = \sum T_n(t) \cdot X_n(x)$$
-
+    $$u(x,t) = \sum T_n(t) \cdot X_n(x)$$
+    
     \item impose \textbf{initial conditions} to get coefficients of resulting (fourier series) solution
   \end{enumerate}
 \end{recipe}
+
+$\to$ Can be applied to "nearly all" linear 2nd-order PDEs.
 
 \subsection{General solutions}
 
@@ -457,7 +467,7 @@ PDE $\leadsto$ 2 ODE systems $\leadsto$ boundary conditions to find eigenvalues 
 
   \item \textbf{ND} (Mixed): $u_x(0,t)=0,\;u(L,t)=0$
     \hspace*{12pt}$X_n(x)=\cos\!\left(\tfrac{(n-\tfrac12)\pi x}{L}\right)$
-    \hspace*{12pt}$\lambda_n=\left(\tfrac{(n-\tfrac12)\pi}{L}\right)^2$
+    \hspace*{12pt}$\lambda_n=\left(\frac{(n-\tfrac12)\pi}{L}\right)^2$
 
   \item \textbf{R} (Robin):
     \[
@@ -469,11 +479,11 @@ PDE $\leadsto$ 2 ODE systems $\leadsto$ boundary conditions to find eigenvalues 
 
 \begin{itemize}
   \item $\lambda_n = \left( \frac{n \pi}{L} \right)^2$
-  \item eigenfunctions: Dirichlet $\to$ $\sin(\frac{n \pi}{L}x)$, Neumann $\to$ $cos(\frac{n \pi}{L}x)$
+  \item eigenfunctions: Dirichlet $\to$ $\sin(\frac{n \pi}{L}x)$, Neumann $\to$ $\cos(\frac{n \pi}{L}x)$
   \item temporal part: heat $\to$ $e^{-\lambda_n t}$, wave $\to$ $A_n\cos(\sqrt{\lambda_n} t) + B_n\sin(\sqrt{\lambda_n} t)$
 \end{itemize}
 
-\warning{Dirichlet starts at $1$, Neumann at $0$ (constant mode for heat/wave)}
+\warning{Dirichlet starts at $n=1$, Neumann at $n=0$ (constant mode for heat/wave)}
 
 \subsection{non-homogenous PDEs}
 
@@ -497,11 +507,15 @@ Here
   \sin^2\theta + \cos^2\theta = 1.
 \]
 
-\hl{TODO: add compatibility condition (6.3.5)}
+$$
+\Delta u = W_{rr} + \frac 1r W_r + \frac{1}{r^2} W_{\theta\theta} = 0
+$$
 
+\textbf{compatibility condition (6.3.5)}: Necessary condition for $\exists$ of solution to the Neumann problem ($\Delta u = \rho$ in $D$, $\partial_\nu u = g$ on $\partial D$) is
 $$
-\Delta u = W_{rr} + \frac 1r W_r + \frac{1}{r^2} W_{\sigma\sigma} = 0
+\int_{\partial D} g(x(s), y(s)) ds = \int_D \rho(x, y)\ dx\ dy
 $$
+with parametrization $x(s), y(s)$ of $\partial D$. Physically, the total flux through the boundary must equal the internal source.
 
 \subsection{Harmonic Functions}
 
@@ -527,9 +541,9 @@ harmonic function $u$, $\Delta u = 0$
 \begin{enumerate}
   \item \textbf{Weak maximum principle:} $D$ bounded domain, $u\in C^2(D) \cap C(\overline{D})$, $u$ harmonic
     $\implies \max_{\overline{D}} u = \max_{\partial D}u$ \\
-    $\implies$ maximum is the maximum of $u$ in $\overline{D}$ is achieved on the boundary $\partial D$
-  \item \textbf{Strong maximum principle:} $\Delta u = 0$ in $D$ \\
-    if $U$ attains the maximum inside $D\implies u$ constant
+    $\implies$ the maximum of $u$ in $\overline{D}$ is achieved on the boundary $\partial D$.
+  \item \textbf{Strong maximum principle:} $\Delta u = 0$ in $D$ connected \\
+    if $u$ attains the maximum inside $D \implies u$ constant.
   \item \textbf{Mean-value principle:} $\Delta u = 0$, $D$ connected
 \end{enumerate}
 $$
@@ -543,7 +557,7 @@ $$
 \begin{minipage}{0.49\columnwidth}
   \textbf{Compatibility condition} (necessary): Solution $\exists \iff$ net flux over boundary of domain $\Omega$ is $=0$:
   $$
-  \int_{\partial\Omega} \frac{\partial u}{\partial \nu}~d\delta = 0
+  \int_{\partial\Omega} \frac{\partial u}{\partial \nu}~d\sigma = 0
   $$
   for rectangle $[a,b]\times[c,d]$:
   $$
