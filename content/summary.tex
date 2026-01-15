@@ -1,15 +1,16 @@
+% content/summary.tex
+
 \section{Preliminaries}
 \textbf{ODE}: Ordinary differential equation, involving functions of one independent variable and one or more of their derivatives.
 
 \textbf{PDE}: Partial differential equation, equation involving an unknown function of more than one variable and certain of its partial derivatives.
 
-\textbf{Schwartz}: if $u$ has continuous second partial derivatives, then the order can be changed:
-$$u_{xy} = u_{yx}$$
+\textbf{Schwartz}: if $u$ has continuous second partial derivatives, then the order can be changed: $u_{xy} = u_{yx}$
 
-\textbf{Gradient}: of $u = u(x, y, z)$ is defined as
-$$\nabla u := (u_x, u_y, u_z)$$
-and the \textbf{Laplacian} of $u$ is
-$$\Delta u := u_{xx} + u_{yy} + u_{zz}$$
+\begin{align*}
+  \text{For}~u = u(x, y, z): \quad  & \nabla u := (u_x, u_y, u_z) & \text{\textbf{Gradient}} \\
+  & \Delta u := u_{xx} + u_{yy} + u_{zz} & \text{\textbf{Laplacian}}
+\end{align*}
 
 \textbf{Problem}: A PDE supplemented with initial or boundary conditions. A problem is \textbf{well-posed} if it satisfies the following criteria:
 \begin{enumerate}
@@ -39,28 +40,27 @@ $\implies uu_x + u^2u_y + u = e^4$ is quasilinear (of first order)
 
 \subsection{Strong and weak solutions}
 \begin{itemize}
-    \item \textbf{Strong solution (or classical solution):} All derivatives that appear in the PDE exist and are continuous on the whole domain of the PDE.
-    \item \textbf{Weak solution:} There are points in the domain where the derivatives do not exist (or are not continuous). A weak solution cannot directly be plugged into the equation.
+  \item \textbf{Strong solution (or classical solution):} All derivatives that appear in the PDE exist and are continuous on the whole domain of the PDE.
+  \item \textbf{Weak solution:} There are points in the domain where the derivatives do not exist (or are not continuous). A weak solution cannot directly be plugged into the equation.
 \end{itemize}
 
-$\to$ Weak solutjions are NOT unique.
+$\to$ Weak solutions are NOT unique.
 
 \section{Method of Characteristics (MoC)}
 Reduces first order / quasilinear PDEs by reducing them to a system of ODEs using geometrical interpretation.
 
 The first two equations ($x_0(s),y_0(s)$) of the initial curve lie on the xy-plane. We use $s,t$ as a sort of "coordinate transformation"
 \begin{recipe}[solve PDE using method of characteristics]
-Our PDE has the form $a(x,y,u)u_x + b(x,y,u)u_y = c(x,y,u)$
-\begin{enumerate}
- \item define $a$, $b$, $c$
- \item define \textbf{initial curve} based on the side condition(s)
- $$\varGamma(s) = (x_0(s), y_0(s), \tilde{u}_0(s)) = (\dots)$$
- \item solve the ODEs, using the initial values from (2):
- $$\frac{dx}{dt}=a \quad \frac{dy}{dt}=b \quad \frac{d\tilde{u}}{dt}=c$$
- \item The ODEs form a system of equations. Rearrange them according to t and s, then substitute the result into u(t) to obtain u(x, y).
-\end{enumerate}
+  Our PDE has the form $a(x,y,u)u_x + b(x,y,u)u_y = c(x,y,u)$
+  \begin{enumerate}
+    \item define $a$, $b$, $c$
+    \item define \textbf{initial curve} based on the side condition(s)
+      $$\varGamma(s) = (x_0(s), y_0(s), \tilde{u}_0(s)) = (\dots)$$
+    \item solve the ODEs, using the initial values from (2):
+      $$\frac{dx}{dt}=a \quad \frac{dy}{dt}=b \quad \frac{d\tilde{u}}{dt}=c$$
+    \item The ODEs form a system of equations. Rearrange them according to t and s, then substitute the result into u(t) to obtain u(x, y).
+  \end{enumerate}
 \end{recipe}
-
 
 \textbf{Example} (Method of characteristics)
 $$xu_x+u_y = 1 \quad u(x,0)=f(x)$$
@@ -69,28 +69,28 @@ $\to$ define $a,b,c,\varGamma$
 
 $$
 \begin{pmatrix}
-a\\b\\c
-\end{pmatrix} = \begin{pmatrix}
-x\\1\\1
-\end{pmatrix} \quad \varGamma(s) = \begin{pmatrix}
-x_{0}(s)\\y_{0}(s) \\\tilde{u}_{0}(s)
-\end{pmatrix} = \begin{pmatrix}
-s\\0\\f(s)
+  a\\b\\c
+\end{pmatrix} =
+\begin{pmatrix}
+  x\\1\\1
+\end{pmatrix} \quad \varGamma(s) =
+\begin{pmatrix}
+  x_{0}(s)\\y_{0}(s) \\\tilde{u}_{0}(s)
+\end{pmatrix} =
+\begin{pmatrix}
+  s\\0\\f(s)
 \end{pmatrix}
 $$
 
 $\to$ solve ODEs
 
 \begin{align*}
- \frac{dx}{dt} = x & &  \implies & x(t) = C_{1}e^t \\
- \text{initial condition:}  & &  & x(0) = C_{1} \stackrel{!}{=} s \\
- &  & \implies & x(s) = se^t \\
-\frac{dy}{dt} = 1 &  & \implies  & y(t) = t+C_{2} \\
-\text{initial condition:}  &  &  & y(0) = C_{2} \stackrel{!}{=} 0 \\
- &  & \implies & y(t) = t \\
-\frac{d\tilde{u}}{dt} = 1 &  & \implies & \tilde{u}(t) = t+C_{3} \\
-\text{initial condition:} &  &  & \tilde{u}(0) = C_{3} \stackrel{!}{=} f(s) \\
- &  & \implies & \tilde{u}(t) = t + f(s)
+  \frac{dx}{dt} = x & &  \implies & x(t) = C_{1}e^t && \implies x(s)=se^t\\
+  & &  & x(0) = C_{1} \stackrel{!}{=} s \\
+  \frac{dy}{dt} = 1 &  & \implies  & y(t) = t+C_{2} && \implies y(t) = t\\
+  &  &  & y(0) = C_{2} \stackrel{!}{=} 0 \\
+  \frac{d\tilde{u}}{dt} = 1 &  & \implies & \tilde{u}(t) = t+C_{3} &  & \implies \tilde{u}(t) = t + f(s)\\
+  &  &  & \tilde{u}(0) = C_{3} \stackrel{!}{=} f(s)
 \end{align*}
 
 $\to$ rearrange to x,y
@@ -105,34 +105,44 @@ Thus, the result is $u(x,y) = y + f(xe^{-y})$.
 Consider the Cauchy problem
 
 \[
-\begin{cases}
-a{x, y, u}u_x + b{x, y, u}u_y = c{x, y, u} \\
-\Gamma(s) = (x_0{s},y_0(s),u_0{s})
-\end{cases}
+  \begin{cases}
+    a{x, y, u}u_x + b{x, y, u}u_y = c{x, y, u} \\
+    \Gamma(s) = (x_0{s},y_0(s),u_0{s})
+  \end{cases}
 \]
 Assume that $\exists s_0 \in \mathbb{R}$ such that transversality cond. holds at $(0, s_0)$
-det
 \[
-\begin{pmatrix}
-\partial_{t} x(0,s_0) & \partial_{t} y(0,s_0) \\
-\partial_{s} x(0,s_0) & \partial_{s} y(0,s_0)
-\end{pmatrix}
-\neq 
-0
+  \det
+  \begin{pmatrix}
+    \partial_{t} x(0,s_0) & \partial_{t} y(0,s_0) \\
+    \partial_{s} x(0,s_0) & \partial_{s} y(0,s_0)
+  \end{pmatrix} =
+  \det
+  \begin{pmatrix}
+    a & b \\
+    \partial_s x_0 & \partial_s y_0
+  \end{pmatrix}
+  \neq
+  0
 \]
 
 Then there exists a unique solution u of the Cauchy problem in a neighbourhood
 of $(x_0(s_0),y_0(s_0))$
 
+\section{Conservation Laws}
+First-order PDE describing the evolution of a density $u(x,t)$ under a flux $f(u)$:
+$\to f:\mathbb{R}\to\mathbb{R}$ flux function, $c(u)=f'(u)$
 
-
-\section{Conservation laws and shock waves}
-
-\textbf{conservation law} ($f:\mathbb{R}\to\mathbb{R}$ flux function, $c(u)=f'(u)$)
 $$u_y + f(u)_x = 0 \quad \text{or} \quad u_y + c(u)u_x = 0$$
 
+where $c(u)$ represents the \textbf{characteristic speed}.
+
+\subsection{Shock Waves and Weak Solutions}
 \textbf{shock wave}: forms when characteristics intersect. Speed given by \textbf{Rankine-Hugoniot}:
 $$\sigma'(y) = \frac{f(u^+) - f(u^-)}{u^+ - u^-}$$
+
+% characteristic slope vs shock speed
+\textbf{Characteristics}: The slope of the characteristic curves is given by $\frac{dx}{dy} = c(u)$. A shock exists where characteristics with different speeds $\alpha = c(u^-)$ and $\beta = c(u^+)$ collide.
 
 \textbf{critical time} (note that $c(u)=f'(u)$):
 $$
@@ -144,7 +154,7 @@ $$
 \int_{a}^{b} u(x, y_{2}) \,dx - \int_{a}^{b} u(x, y_{1}) \,dx = - \int_{y_{1}}^{y_{2}} \left[ f(u(b, y)) - f(u(a, y)) \right] \,dy
 $$
 
-\textbf{entropy condition}: A weak solution satifies the entropy condition of characteristics only enter shocks but do not emanate from them This means:
+\textbf{entropy condition}: A weak solution satifies the entropy condition of characteristics only enter shocks but do not emanate from them. This means:
 $$c(u^+) < \sigma' < c(u^-)$$
 
 (this condition ensures uniqueness of weak solution)
@@ -154,71 +164,72 @@ Models the flow of a mass with concentration $u(x,y)$ and initial
 concentration $h(x)$ at $y=0$. The flow speed depends on the concentration.
 
 \[
-\begin{cases}
-u_y + u\,u_x = 0,\\[2mm]
-u(x,0) = h(x),
-\end{cases}
-\qquad
-c(u) = u, \qquad
-f(u) = \tfrac12 u^2 .
+  \begin{cases}
+    u_y + u\,u_x = 0,\\[2mm]
+    u(x,0) = h(x),
+  \end{cases}
+  \qquad
+  c(u) = u, \qquad
+  f(u) = \tfrac12 u^2 .
 \]
-
 
 \subsection{Notion of weak solutions}
 Let $f$ be the flux. The integral formulation of conservation laws
 (also valid when $u$ is not smooth on the whole domain) is:
 \[
-\int_a^b \bigl(u(x,y_2) - u(x,y_1)\bigr)\,dx
-= - \int_{y_1}^{y_2} \bigl[f(u(b,y)) - f(u(a,y))\bigr]\,dy .
+  \int_a^b \bigl(u(x,y_2) - u(x,y_1)\bigr)\,dx
+  = - \int_{y_1}^{y_2} \bigl[f(u(b,y)) - f(u(a,y))\bigr]\,dy .
 \]
 
-Let $D$ be the domain of $u(x,y)$, and suppose $D$ is divided into 
+Let $D$ be the domain of $u(x,y)$, and suppose $D$ is divided into
 subdomains $D_i$ such that $u$ is smooth on each $D_i$.
 
 \begin{itemize}
-    \item $u(x,y)$ is a \textbf{weak solution} on 
-    $D = \bigcup_{i=1}^n D_i$ if it is smooth on each subdomain $D_i$ 
+  \item $u(x,y)$ is a \textbf{weak solution} on
+    $D = \bigcup_{i=1}^n D_i$ if it is smooth on each subdomain $D_i$
     and satisfies the integral conservation law on $D$.
-    \item The boundaries between the subdomains $D_i$ are curves called 
+  \item The boundaries between the subdomains $D_i$ are curves called
     \textbf{shocks}.
 \end{itemize}
 
+\section{Classification of Second Order PDEs}
+% the type of a second-order pde determines the qualitative behavior of its solutions
+General linear second-order PDE in two variables ($a-g$ functions of $(x, y)$ but not $u$):
+$$a u_{xx} + 2b u_{xy} + c u_{yy} + d u_x + e u_y + f u = g$$
 
-\subsection{2nd order linear PDE classification}
-\hl{TODO}: where to put this subsection?
-
-All second-order linear PDEs can be written in the general form:
-$$
-L[u] = a u_{xx} + 2b u_{xy} + c u_{yy} + d u_x + e u_y + f u = g.
-$$
-Where $a, b, c, d, e, f, g$ are all functions of $(x, y)$ but not $u$.
-
-The \textbf{discriminant} $\delta(x_0, y_0)$ is defined as
-$$
-\delta(x, y) := b^2 - a c.
-$$
-
-The PDE is classified based on the sign of the discriminant $\delta$:
+The classification is determined by the sign of the \textbf{discriminant} $\delta = b^2 - ac$:
 \begin{itemize}
-    \item If $\delta > 0$: PDE is \textbf{hyperbolic} ($\sim$ Wave equation)
-    \item If $\delta = 0$: PDE is \textbf{parabolic} ($\sim$ Heat equation)
-    \item If $\delta < 0$: PDE is \textbf{elliptic} ($\sim$ Laplace equation)
+  \item If $\delta > 0$: PDE is \textbf{hyperbolic} ($\sim$ Wave equation)
+  \item If $\delta = 0$: PDE is \textbf{parabolic} ($\sim$ Heat equation)
+  \item If $\delta < 0$: PDE is \textbf{elliptic} ($\sim$ Laplace equation)
 \end{itemize}
+
+% heat equation formula
+\section{Heat equation}
+\textbf{Standard form} ($k > 0$ thermal diffusivity):
+$$u_t - k u_{xx} = f(x, t)$$
+
+\textbf{Maximum Principle for the Heat Equation}:
+For a solution $u(x, t)$ on the domain $[0, L] \times [0, T]$, the maximum (and minimum) values are always attained on the \textbf{parabolic boundary} $\Gamma_T$:
+$$\Gamma_T = \{ (x, 0) : x \in [0, L] \} \cup \{ (0, t) : t \in [0, T] \} \cup \{ (L, t) : t \in [0, T] \}$$
+This implies that if $f(x, t) \le 0$, the temperature cannot exceed its initial or boundary values.
 
 \section{One dimensional wave equation}
 Hyperbolic 2nd order differential equation of the form:
 $$
 \begin{cases}
- u_{tt} - c^2u_{xx} &= F(x,t) \\
- u(x,0) &= f(x) \\
- u_{t}(x,0) &= g(x)
+  u_{tt} - c^2u_{xx} &= F(x,t) \\
+  u(x,0) &= f(x) \\
+  u_{t}(x,0) &= g(x)
 \end{cases}
 $$
 
-\warning{If $f,g,F$ are odd/even/T-periodic in $x$, then $u(x,t)$ is odd/even/T-periodic, too (see 6.3/7.2)}
-\hl{TODO}: What are the requirements for d'Alembert's formula?
+\warning{$f\land g \land F$ odd/even/T-periodic in $x \implies$ $u(x,t)$ odd/even/T-periodic in $x$, too (see 6.3/7.2)}
 
-\subsection{homogenous wave equation ($F(x,t)=0$)}
+% d'Alembert requirements: f in C^2, g in C^1, F in C^1
+\textbf{Requirements}: For a classical solution, $f \in C^2(\mathbb{R})$, $g \in C^1(\mathbb{R})$, and $F \in C^1(\mathbb{R} \times [0, \infty))$.
+
+\subsection{homogenous wave equation (F(x,t)=0)}
 Solution consists of a backwards-moving wave $F$ and forward-moving wave $G$:
 $$
 u(x,t) = F(x+ct) + G(x-ct)
@@ -235,75 +246,70 @@ u(x,t) = \frac{f(x+ct) + f(x-ct)}{2} + \frac{1}{2c} \int_{x-ct}^{x+ct}g(y)\ dy +
 $$
 
 \begin{recipe}[trick: converting to homogenous wave equation]
-For a non-homogenous wave equation $u$, define $w:= u-v$, $w$ homogenous:
-$$
-\begin{cases}
-w_{tt}-c^2 u_{xx}  & =0 \\
-w(x,0) = u(x,0)-v(x,0)  & = f(x) - v(x,0) \\
-w_{t}(x,0) = u_{t}(x,0) - v_{t}(x,0)  & = g(x) - v_{t}(x,0)
-\end{cases}
-$$
-After finding $v$, we can now solve $w$ using d'Alembert's simple formula.
+  For a non-homogenous wave equation $u$, define $w:= u-v$, $w$ homogenous:
+  $$
+  \begin{cases}
+    w_{tt}-c^2 u_{xx}  & =0 \\
+    w(x,0) = u(x,0)-v(x,0)  & = f(x) - v(x,0) \\
+    w_{t}(x,0) = u_{t}(x,0) - v_{t}(x,0)  & = g(x) - v_{t}(x,0)
+  \end{cases}
+  $$
+  After finding $v$, we can now solve $w$ using d'Alembert's simple formula.
 
-\hl{TODO}: How to find $v$?
+  % how to find v: usually a steady-state or particular solution
+  \textbf{How to find $v$}: If boundary conditions are constant $u(0, t) = A$ and $u(L, t) = B$, choose $v(x) = A + \frac{B-A}{L}x$ (the linear steady-state solution). If there is a source $F(x)$, solve $-c^2 v''(x) = F(x)$.
 \end{recipe}
 
 \textbf{Example: 1D Wave Equation on a Ring (periodic extension)}
 
 \[
-\begin{cases}
-u_{tt} - c^2 u_{xx} = 0, & x \in [0,1],\, t>0,\\[0.3em]
-u(x,0) = v_0(x), \quad u_t(x,0) = v_1(x),\\[0.3em]
-u(0,t) = u(1,t), \quad u_x(0,t) = u_x(1,t) \quad (\text{periodic BC})
-\end{cases}
+  \begin{cases}
+    u_{tt} - c^2 u_{xx} = 0, & x \in [0,1],\, t>0,\\[0.3em]
+    u(x,0) = v_0(x), \quad u_t(x,0) = v_1(x),\\[0.3em]
+    u(0,t) = u(1,t), \quad u_x(0,t) = u_x(1,t) \quad (\text{periodic BC})
+  \end{cases}
 \]
 
 \[
-v_0(x) = x - x^2, \quad v_1(x) = 0, \quad c = \sqrt{\pi} - 1
+  v_0(x) = x - x^2, \quad v_1(x) = 0, \quad c = \sqrt{\pi} - 1
 \]
 
 \vspace{0.3em}
 \textit{D’Alembert solution:}
 \[
-u(x,t) = \tfrac{1}{2}\big[v_0(x+ct) + v_0(x-ct)\big]
-      + \tfrac{1}{2c}\int_{x-ct}^{x+ct} v_1(y)\,dy
+  u(x,t) = \tfrac{1}{2}\big[v_0(x+ct) + v_0(x-ct)\big]
+  + \tfrac{1}{2c}\int_{x-ct}^{x+ct} v_1(y)\,dy
 \]
 
 Since \(v_1(x)=0\):
 \[
-u(x,t) = \tfrac{1}{2}\big[v_0(x+ct) + v_0(x-ct)\big]
+  u(x,t) = \tfrac{1}{2}\big[v_0(x+ct) + v_0(x-ct)\big]
 \]
 
 \textit{At } \(x=\tfrac{1}{2},\; t=2025\):
 \[
-u\!\left(\tfrac{1}{2},2025\right)
- = \tfrac{1}{2}\big[v_0(\tfrac{1}{2}+t) + v_0(\tfrac{1}{2}-t)\big]
- = v_0\!\left(\tfrac{1}{2}\right)
- = \tfrac{1}{2} - \left(\tfrac{1}{2}\right)^2
- = \tfrac{1}{4}.
+  u\!\left(\tfrac{1}{2},2025\right)
+  = \tfrac{1}{2}\big[v_0(\tfrac{1}{2}+t) + v_0(\tfrac{1}{2}-t)\big]
+  = v_0\!\left(\tfrac{1}{2}\right)
+  = \tfrac{1}{2} - \left(\tfrac{1}{2}\right)^2
+  = \tfrac{1}{4}.
 \]
 
-
-\subsection{Uniqueness}
-The 1D-wave equation has a unique solution
-
-\subsection{Symmetry}
-If the initial data $f_{x}$, $g_{x}$ and the inhomogenity $F_{x,t}$ are even/odd/periodic with respect to x, then the solution is even/odd/periodic with respect to x as well
-
+\warning{\textbf{Uniqueness} the 1D-wave equation has a unique solution.}
 
 \section{Domain of dependence and region of influence}
 \vspace{-10pt}
 \begin{table}[H]
-\centering
-\begin{tabular}{c c}
-\includegraphics[width=0.45\linewidth]{img/region_of_influence.png}
-&
-\includegraphics[width=0.45\linewidth]{img/characteristictriangle.png}
-\\
-\scriptsize Region of influence
-&
-\scriptsize Characteristic triangle (domain of dependence)
-\end{tabular}
+  \centering
+  \begin{tabular}{c c}
+    \includegraphics[width=0.45\linewidth]{img/region_of_influence.png}
+    &
+    \includegraphics[width=0.45\linewidth]{img/characteristictriangle.png}
+    \\
+    \scriptsize Region of influence
+    &
+    \scriptsize Characteristic triangle (domain of dependence)
+  \end{tabular}
 \end{table}
 \scriptsize
 
@@ -312,7 +318,7 @@ The region of influence of an interval $[a,b]$ consists of all points $(x,t)$
 with $t>0$ that can be affected by the initial data on $[a,b]$.
 These points satisfy
 \[
-x - ct \le b, \qquad x + ct \ge a.
+  x - ct \le b, \qquad x + ct \ge a.
 \]
 Outside this region, changes in $f$ or $g$ on $[a,b]$ do not influence the solution.
 
@@ -321,12 +327,12 @@ Outside this region, changes in $f$ or $g$ on $[a,b]$ do not influence the solut
 \textbf{Domain of dependence.}
 The value of the solution at a point $(x_0,t_0)$ depends only on the initial data in
 \[
-[x_0 - ct_0,\; x_0 + ct_0].
+  [x_0 - ct_0,\; x_0 + ct_0].
 \]
 Information outside this interval cannot reach $(x_0,t_0)$.
 The lines
 \[
-x - ct = x_0 - ct_0, \qquad x + ct = x_0 + ct_0
+  x - ct = x_0 - ct_0, \qquad x + ct = x_0 + ct_0
 \]
 form the boundary of the \emph{characteristic triangle}
 $\Delta_{(x_0,t_0)}$.
@@ -337,110 +343,109 @@ $\Delta_{(x_0,t_0)}$.
 If the initial data is smooth on $[x_0 - ct_0,\; x_0 + ct_0]$, then the solution is smooth
 inside the characteristic triangle $\Delta_{(x_0,t_0)}$.
 
-
-
 \section{Separation of variables}
-\hl{TODO: add compatibility condition}
+% compatibility condition
+\textbf{Compatibility Conditions}: To ensure $u \in C^0(\overline{D})$, initial and boundary conditions must match at corners: $f(0) = u(0,0)$ and $f(L) = u(L,0)$. For $C^1$ or $C^2$ solutions, higher-order derivatives must be consistent.
 
-Can be applied to "nearly all" linear 2nd-order PDEs
-
-PDE $\leadsto$ 2 ODE systems $\leadsto$ boundary conditions to find eigenvalues $\lambda$, eigenfunctions $\sin/\hdots \leadsto$ initial condition
 
 \begin{recipe}[Separation of variables for heat/wave equation]
-\begin{enumerate}
- \item separation of variables to get two ODEs
+  \begin{enumerate}
+    \item separation of variables to get two ODEs
 
- Substitute $u(x,t) = X(x)T(t)$ into PDE, transform to $\frac{X^{(n)}(x)}{X(x)} = \frac{T^{(m)}(t)}{T(t)} = -\lambda$
+      Substitute $u(x,t) = X(x)T(t)$ into PDE, transform to $\frac{X^{(n)}(x)}{X(x)} = \frac{T^{(m)}(t)}{T(t)} = -\lambda$
 
- ODEs: $X^{(n)}(x) + \lambda X(x) = 0 \quad T^{(m)}(t) + \lambda T(t) = 0$
+      ODEs: $X^{(n)}(x) + \lambda X(x) = 0 \quad T^{(m)}(t) + \lambda T(t) = 0$
 
- \item solve ODEs
- \item use \textbf{boundary conditions} as IVP for PDEs
- \item get general solution by superposition
+    \item solve ODEs
+    \item use \textbf{boundary conditions} to determine eigenvalues $\lambda_n$ and eigenfunctions $X_n(x)$
+    \item get general solution by superposition
 
- $$u(x,t) = \sum T_n(t) \cdot X_n(x)$$
+      $$u(x,t) = \sum T_n(t) \cdot X_n(x)$$
 
- \item impose \textbf{initial conditions} to get coefficients of resulting (fourier series) solution\end{enumerate}
+    \item impose \textbf{initial conditions} to get coefficients of resulting (fourier series) solution
+  \end{enumerate}
 \end{recipe}
+
+$\to$ Can be applied to "nearly all" linear 2nd-order PDEs.
 
 \subsection{General solutions}
 
 \vspace{-15pt}
 
 \begin{table}[H]
-\scriptsize
-\setlength{\tabcolsep}{4pt}
-\renewcommand{\arraystretch}{1.15}
+  \scriptsize
+  \setlength{\tabcolsep}{4pt}
+  \renewcommand{\arraystretch}{1.15}
 
-\begin{tabular}{|m{0.02\linewidth}|m{0.31\linewidth}|m{0.57\linewidth}|}
-\hline
-\textbf{BC}
-& \textbf{Heat $u_t = k u_{xx}$}
-& \textbf{Wave $u_{tt} = c^2 u_{xx}$}
-\\ \hline
+  \begin{tabular}{|m{0.02\linewidth}|m{0.31\linewidth}|m{0.57\linewidth}|}
+    \hline
+    \textbf{BC}
+    & \textbf{Heat $u_t = k u_{xx}$}
+    & \textbf{Wave $u_{tt} = c^2 u_{xx}$}
+    \\ \hline
 
-\textbf{D}\\[-3pt]
-&
-$u=\displaystyle\sum_{n=1}^{\infty} b_n e^{-k(\frac{n\pi}{L})^2 t}\sin\!\left(\tfrac{n\pi x}{L}\right)$
-&
-$\displaystyle
-u=\sum_{n=1}^{\infty}
-\sin\!\left(\tfrac{n\pi x}{L}\right)
-\!\left[
-A_n\cos\!\left(\tfrac{n\pi c}{L}t\right)+
-B_n\sin\!\left(\tfrac{n\pi c}{L}t\right)
-\right]
-$
-\\ \hline
+    \textbf{D}\\[-3pt]
+    &
+    $u=\displaystyle\sum_{n=1}^{\infty} b_n e^{-k(\frac{n\pi}{L})^2 t}\sin\!\left(\tfrac{n\pi x}{L}\right)$
+    &
+    $\displaystyle
+    u=\sum_{n=1}^{\infty}
+    \sin\!\left(\tfrac{n\pi x}{L}\right)
+    \!\left[
+      A_n\cos\!\left(\tfrac{n\pi c}{L}t\right)+
+      B_n\sin\!\left(\tfrac{n\pi c}{L}t\right)
+    \right]
+    $
+    \\ \hline
 
-\textbf{N}\\[-3pt]
-&
-$u=a_0 + \displaystyle\sum_{n=1}^{\infty}
-a_n e^{-k(\frac{n\pi}{L})^2 t}\cos\!\left(\tfrac{n\pi x}{L}\right)$
-&
-$\displaystyle
-u=A_0+
-\sum_{n=1}^{\infty}
-\cos\!\left(\tfrac{n\pi x}{L}\right)
-\!\left[
-A_n\cos\!\left(\tfrac{n\pi c}{L}t\right)+
-B_n\sin\!\left(\tfrac{n\pi c}{L}t\right)
-\right]
-$
-\\ \hline
+    \textbf{N}\\[-3pt]
+    &
+    $u=a_0 + \displaystyle\sum_{n=1}^{\infty}
+    a_n e^{-k(\frac{n\pi}{L})^2 t}\cos\!\left(\tfrac{n\pi x}{L}\right)$
+    &
+    $\displaystyle
+    u=A_0+
+    \sum_{n=1}^{\infty}
+    \cos\!\left(\tfrac{n\pi x}{L}\right)
+    \!\left[
+      A_n\cos\!\left(\tfrac{n\pi c}{L}t\right)+
+      B_n\sin\!\left(\tfrac{n\pi c}{L}t\right)
+    \right]
+    $
+    \\ \hline
 
-\textbf{DN}\\[-3pt]
-&
-$X_n=\sin\!\left(\tfrac{(n-\tfrac12)\pi x}{L}\right)\newline
-u=\displaystyle\sum_{n=1}^{\infty}
-c_n e^{-k((n-\tfrac12)\frac{\pi}{L})^2 t} X_n$
-&
-$\displaystyle
-u=\sum_{n=1}^{\infty} X_n
-\left[
-A_n\cos\!\left(\tfrac{(n-\tfrac12)\pi c}{L}t\right)
-+
-B_n\sin\!\left(\tfrac{(n-\tfrac12)\pi c}{L}t\right)
-\right]
-$
-\\ \hline
+    \textbf{DN}\\[-3pt]
+    &
+    $X_n=\sin\!\left(\tfrac{(n-\tfrac12)\pi x}{L}\right)\newline
+    u=\displaystyle\sum_{n=1}^{\infty}
+    c_n e^{-k((n-\tfrac12)\frac{\pi}{L})^2 t} X_n$
+    &
+    $\displaystyle
+    u=\sum_{n=1}^{\infty} X_n
+    \left[
+      A_n\cos\!\left(\tfrac{(n-\tfrac12)\pi c}{L}t\right)
+      +
+      B_n\sin\!\left(\tfrac{(n-\tfrac12)\pi c}{L}t\right)
+    \right]
+    $
+    \\ \hline
 
-\textbf{ND}\\[-3pt]
-&
-$X_n=\cos\!\left(\tfrac{(n-\tfrac12)\pi x}{L}\right)\newline
-u=\displaystyle\sum_{n=1}^{\infty}
-c_n e^{-k((n-\tfrac12)\frac{\pi}{L})^2 t} X_n$
-&
-$\displaystyle
-u=\sum_{n=1}^{\infty} X_n
-\left[
-A_n\cos\!\left(\tfrac{(n-\tfrac12)\pi c}{L}t\right)
-+
-B_n\sin\!\left(\tfrac{(n-\tfrac12)\pi c}{L}t\right)
-\right]
-$
-\\ \hline
-\end{tabular}
+    \textbf{ND}\\[-3pt]
+    &
+    $X_n=\cos\!\left(\tfrac{(n-\tfrac12)\pi x}{L}\right)\newline
+    u=\displaystyle\sum_{n=1}^{\infty}
+    c_n e^{-k((n-\tfrac12)\frac{\pi}{L})^2 t} X_n$
+    &
+    $\displaystyle
+    u=\sum_{n=1}^{\infty} X_n
+    \left[
+      A_n\cos\!\left(\tfrac{(n-\tfrac12)\pi c}{L}t\right)
+      +
+      B_n\sin\!\left(\tfrac{(n-\tfrac12)\pi c}{L}t\right)
+    \right]
+    $
+    \\ \hline
+  \end{tabular}
 \end{table}
 \vspace{-10pt}
 \scriptsize
@@ -448,23 +453,23 @@ $
 
 \begin{itemize}[leftmargin=10pt, itemsep=0pt, topsep=0pt]
 
-    \item \textbf{D} (Dirichlet): $u(0,t)=0,\;u(L,t)=0$
+  \item \textbf{D} (Dirichlet): $u(0,t)=0,\;u(L,t)=0$
     \hspace*{12pt}$X_n(x)=\sin\!\left(\tfrac{n\pi x}{L}\right)$
     \hspace*{12pt}$\lambda_n=\left(\tfrac{n\pi}{L}\right)^2$
 
-    \item \textbf{N} (Neumann): $u_x(0,t)=0,\;u_x(L,t),t=0$
+  \item \textbf{N} (Neumann): $u_x(0,t)=0,\;u_x(L,t),t=0$
     \hspace*{12pt}$X_n(x)=\cos\!\left(\tfrac{n\pi x}{L}\right)$
     \hspace*{12pt}$\lambda_n=\left(\tfrac{n\pi}{L}\right)^2$
 
-    \item \textbf{DN} (Mixed): $u(0,t)=0,\;u_x(L,t)=0$
+  \item \textbf{DN} (Mixed): $u(0,t)=0,\;u_x(L,t)=0$
     \hspace*{12pt}$X_n(x)=\sin\!\left(\tfrac{(n-\tfrac12)\pi x}{L}\right)$
     \hspace*{12pt}$\lambda_n=\left(\tfrac{(n-\tfrac12)\pi}{L}\right)^2$
 
-    \item \textbf{ND} (Mixed): $u_x(0,t)=0,\;u(L,t)=0$
+  \item \textbf{ND} (Mixed): $u_x(0,t)=0,\;u(L,t)=0$
     \hspace*{12pt}$X_n(x)=\cos\!\left(\tfrac{(n-\tfrac12)\pi x}{L}\right)$
-    \hspace*{12pt}$\lambda_n=\left(\tfrac{(n-\tfrac12)\pi}{L}\right)^2$
+    \hspace*{12pt}$\lambda_n=\left(\frac{(n-\tfrac12)\pi}{L}\right)^2$
 
-    \item \textbf{R} (Robin):
+  \item \textbf{R} (Robin):
     \[
       \alpha_0 u(0,t) + \beta_0 u_x(0,t) = \gamma_0, \qquad
       \alpha_L u(L,t) + \beta_L u_x(L,t) = \gamma_L
@@ -472,43 +477,45 @@ $
 
 \end{itemize}
 
-
 \begin{itemize}
- \item $\lambda_n = \left( \frac{n \pi}{L} \right)^2$
- \item eigenfunctions: Dirichlet $\to$ $\sin(\frac{n \pi}{L}x)$, Neumann $\to$ $cos(\frac{n \pi}{L}x)$
- \item temporal part: heat $\to$ $e^{-\lambda_n t}$, wave $\to$ $A_n\cos(\sqrt{\lambda_n} t) + B_n\sin(\sqrt{\lambda_n} t)$
+  \item $\lambda_n = \left( \frac{n \pi}{L} \right)^2$
+  \item eigenfunctions: Dirichlet $\to$ $\sin(\frac{n \pi}{L}x)$, Neumann $\to$ $\cos(\frac{n \pi}{L}x)$
+  \item temporal part: heat $\to$ $e^{-\lambda_n t}$, wave $\to$ $A_n\cos(\sqrt{\lambda_n} t) + B_n\sin(\sqrt{\lambda_n} t)$
 \end{itemize}
 
-\warning{Dirichlet starts at $1$, Neumann at $0$ (constant mode for heat/wave)}
+\warning{Dirichlet starts at $n=1$, Neumann at $n=0$ (constant mode for heat/wave)}
 
 \subsection{non-homogenous PDEs}
-
 
 \section{Elliptic equations}
 
 When the domain $D$ has radial symmetry, polar coordinates are useful.
 
 \[
-\begin{cases}
-x = r\cos\theta,\\
-y = r\sin\theta,
-\end{cases}
-\qquad
-A_D = \int_{0}^{\alpha}\int_{0}^{r} w(r,\theta)\, r\,dr\,d\theta.
+  \begin{cases}
+    x = r\cos\theta,\\
+    y = r\sin\theta,
+  \end{cases}
+  \qquad
+  A_D = \int_{0}^{\alpha}\int_{0}^{r} w(r,\theta)\, r\,dr\,d\theta.
 \]
 
 Here
 \[
-r^2 = x^2 + y^2,
-\qquad
-\sin^2\theta + \cos^2\theta = 1.
+  r^2 = x^2 + y^2,
+  \qquad
+  \sin^2\theta + \cos^2\theta = 1.
 \]
 
-\hl{TODO: add compatibility condition (6.3.5)}
+$$
+\Delta u = W_{rr} + \frac 1r W_r + \frac{1}{r^2} W_{\theta\theta} = 0
+$$
 
+\textbf{compatibility condition (6.3.5)}: Necessary condition for $\exists$ of solution to the Neumann problem ($\Delta u = \rho$ in $D$, $\partial_\nu u = g$ on $\partial D$) is
 $$
-\Delta u = W_{rr} + \frac 1r W_r + \frac{1}{r^2} W_{\sigma\sigma} = 0
+\int_{\partial D} g(x(s), y(s)) ds = \int_D \rho(x, y)\ dx\ dy
 $$
+with parametrization $x(s), y(s)$ of $\partial D$. Physically, the total flux through the boundary must equal the internal source.
 
 \subsection{Harmonic Functions}
 
@@ -516,108 +523,107 @@ $u\in C^2(\mathbb{R}^2)$ harmonic $\iff \Delta u=0$.
 
 A harmonic polynomial of degree $n$:
 \[
-P(x,y)=\sum_{i+j\le n} a_{ij}x^iy^j,
-\qquad \Delta P=0.
+  P(x,y)=\sum_{i+j\le n} a_{ij}x^iy^j,
+  \qquad \Delta P=0.
 \]
 
 \[
-\begin{cases}
-n=0: & 1,\\
-n=1: & x,\ y \quad (\Rightarrow ax+by),\\
-n=2: & xy,\ x^2-y^2,\\
-n=3: & x^3-3xy^2,\ y^3-3x^2y.
-\end{cases}
+  \begin{cases}
+    n=0: & 1,\\
+    n=1: & x,\ y \quad (\Rightarrow ax+by),\\
+    n=2: & xy,\ x^2-y^2,\\
+    n=3: & x^3-3xy^2,\ y^3-3x^2y.
+  \end{cases}
 \]
-
-
 
 \section{Maximum principles}
 harmonic function $u$, $\Delta u = 0$
 \begin{enumerate}
- \item \textbf{Weak maximum principle:} $D$ bounded domain, $u\in C^2(D) \cap C(\overline{D})$, $u$ harmonic $\implies \max_{\overline{D}} u = \max_{\partial D}u$
- \item \textbf{Strong maximum principle:} $\Delta u = 0$ in $D$ \\
-       if $U$ attains the maximum inside $D\implies u$ constant
- \item \textbf{Mean-value principle:} $\Delta u = 0$, $D$ connected
+  \item \textbf{Weak maximum principle:} $D$ bounded domain, $u\in C^2(D) \cap C(\overline{D})$, $u$ harmonic
+    $\implies \max_{\overline{D}} u = \max_{\partial D}u$ \\
+    $\implies$ the maximum of $u$ in $\overline{D}$ is achieved on the boundary $\partial D$.
+  \item \textbf{Strong maximum principle:} $\Delta u = 0$ in $D$ connected \\
+    if $u$ attains the maximum inside $D \implies u$ constant.
+  \item \textbf{Mean-value principle:} $\Delta u = 0$, $D$ connected
 \end{enumerate}
 $$
 u(x_0,y_0) = \frac{1}{2\pi R}\int_{\partial B_R(x_0,y_0)} u(x(s),y(s))ds = \frac{1}{2\pi}\int_0^{2\pi} u(x_0+R\cos\vartheta,\ y_0+R\sin\vartheta) d\vartheta
 $$
-
 
 \section{Laplace's equation in rectangular and circular domains}
 \subsection{Neumann problem with rectangular domain}
 
 \noindent
 \begin{minipage}{0.49\columnwidth}
-	\textbf{Compatibility condition} (necessary): Solution $\exists \iff$ net flux over boundary of domain $\Omega$ is $=0$:
-	$$
-	\int_{\partial\Omega} \frac{\partial u}{\partial \nu}~d\delta = 0
-	$$
-	for rectangle $[a,b]\times[c,d]$:
-    $$
-    \int_c^d g - \int_c^d f + \int_a^b k - \int_a^b h \stackrel{!}{=} 0
-    $$
+  \textbf{Compatibility condition} (necessary): Solution $\exists \iff$ net flux over boundary of domain $\Omega$ is $=0$:
+  $$
+  \int_{\partial\Omega} \frac{\partial u}{\partial \nu}~d\sigma = 0
+  $$
+  for rectangle $[a,b]\times[c,d]$:
+  $$
+  \int_c^d g - \int_c^d f + \int_a^b k - \int_a^b h \stackrel{!}{=} 0
+  $$
 \end{minipage}%
 \hfill
 \begin{minipage}{0.49\columnwidth}
-    \centering
-    \includegraphics[width=\columnwidth]{img/neumann_rectangular_problem.png}
+  \centering
+  \includegraphics[width=\columnwidth]{img/neumann_rectangular_problem.png}
 \end{minipage}
 For the Neumann boundary condition, solutions are unique up to additive constants.
 
 \[
-\begin{cases}
-\Delta u = 0
-\quad \text{in } (a,b)\times(c,d),\\
-u_x(a,y) = f(y),\\
-u_x(b,y) = g(y),\\
-u_y(x,c) = h(x),\\
-u_y(x,d) = k(x).
-\end{cases}
+  \begin{cases}
+    \Delta u = 0
+    \quad \text{in } (a,b)\times(c,d),\\
+    u_x(a,y) = f(y),\\
+    u_x(b,y) = g(y),\\
+    u_y(x,c) = h(x),\\
+    u_y(x,d) = k(x).
+  \end{cases}
 \]
 
 \textbf{Compatibility condition}
 \[
-\int_c^d (g-f)\,dy + \int_a^b (k-h)\,dx = 0.
+  \int_c^d (g-f)\,dy + \int_a^b (k-h)\,dx = 0.
 \]
 
 \medskip
 
 To decouple boundary conditions, add a harmonic polynomial:
 \[
-u = v + \alpha(x^2 - y^2),
-\qquad \Delta(x^2-y^2)=0.
+  u = v + \alpha(x^2 - y^2),
+  \qquad \Delta(x^2-y^2)=0.
 \]
 
 Split $v=v_1+v_2$ with
 \[
-\begin{cases}
-\Delta v_1 = 0,\\
-(v_1)_x(a,y) = f(y)+2\alpha a,\\
-(v_1)_x(b,y) = g(y)+2\alpha b,\\
-(v_1)_y(x,c) = 0,\\
-(v_1)_y(x,d) = 0,
-\end{cases}
-\qquad
-\begin{cases}
-\Delta v_2 = 0,\\
-(v_2)_x(a,y) = 0,\\
-(v_2)_x(b,y) = 0,\\
-(v_2)_y(x,c) = h(x)-2\alpha c,\\
-(v_2)_y(x,d) = k(x)-2\alpha d.
-\end{cases}
+  \begin{cases}
+    \Delta v_1 = 0,\\
+    (v_1)_x(a,y) = f(y)+2\alpha a,\\
+    (v_1)_x(b,y) = g(y)+2\alpha b,\\
+    (v_1)_y(x,c) = 0,\\
+    (v_1)_y(x,d) = 0,
+  \end{cases}
+  \qquad
+  \begin{cases}
+    \Delta v_2 = 0,\\
+    (v_2)_x(a,y) = 0,\\
+    (v_2)_x(b,y) = 0,\\
+    (v_2)_y(x,c) = h(x)-2\alpha c,\\
+    (v_2)_y(x,d) = k(x)-2\alpha d.
+  \end{cases}
 \]
 
 Assuming
 \[
-\int_a^b h(x)\,dx = \int_a^b k(x)\,dx = 0,
+  \int_a^b h(x)\,dx = \int_a^b k(x)\,dx = 0,
 \]
 the compatibility condition for $v_1$ yields
 \[
-\alpha
-=
-\frac{1}{2(b-a)(d-c)}
-\int_c^d (f-g)\,dy.
+  \alpha
+  =
+  \frac{1}{2(b-a)(d-c)}
+  \int_c^d (f-g)\,dy.
 \]
 
 \bigskip
@@ -625,95 +631,93 @@ the compatibility condition for $v_1$ yields
 \textbf{General solutions}
 
 \[
-\textstyle
-v_1(x,y)
-=
-A_0 x + B_0
-+
-\sum_{n=1}^{\infty}
-\cos\!\left(\frac{n\pi}{d-c}(y-c)\right)
-\Bigl[
-A_n \cosh\!\left(\frac{n\pi}{d-c}(x-a)\right)
-+
-B_n \cosh\!\left(\frac{n\pi}{d-c}(x-b)\right)
-\Bigr]
+  \textstyle
+  v_1(x,y)
+  =
+  A_0 x + B_0
+  +
+  \sum_{n=1}^{\infty}
+  \cos\!\left(\frac{n\pi}{d-c}(y-c)\right)
+  \Bigl[
+    A_n \cosh\!\left(\frac{n\pi}{d-c}(x-a)\right)
+    +
+    B_n \cosh\!\left(\frac{n\pi}{d-c}(x-b)\right)
+  \Bigr]
 \]
 
 \[
-\textstyle
-v_2(x,y)
-=
-C_0 y + D_0
-+
-\sum_{n=1}^{\infty}
-\cos\!\left(\frac{n\pi}{b-a}(x-a)\right)
-\Bigl[
-C_n \cosh\!\left(\frac{n\pi}{b-a}(y-c)\right)
-+
-D_n \cosh\!\left(\frac{n\pi}{b-a}(y-d)\right)
-\Bigr]
+  \textstyle
+  v_2(x,y)
+  =
+  C_0 y + D_0
+  +
+  \sum_{n=1}^{\infty}
+  \cos\!\left(\frac{n\pi}{b-a}(x-a)\right)
+  \Bigl[
+    C_n \cosh\!\left(\frac{n\pi}{b-a}(y-c)\right)
+    +
+    D_n \cosh\!\left(\frac{n\pi}{b-a}(y-d)\right)
+  \Bigr]
 \]
 
 \[
-u = v + \alpha(x^2-y^2).
+  u = v + \alpha(x^2-y^2).
 \]
-
 
 \subsection{Dirichlet problem with rectangular domain}
 \begin{minipage}{0.49\columnwidth}
-\[
-\begin{cases}
-\Delta u = 0
-    & (x,y) \in (a,b) \times (c,d),\\
-u(a,y) = f(y)
-    & (x,y) \in \{a\} \times [c,d],\\
-u(b,y) = g(y)
-    & (x,y) \in \{b\} \times [c,d],\\
-u(x,c) = h(x)
-    & (x,y) \in [a,b] \times \{c\},\\
-u(x,d) = k(x)
-    & (x,y) \in [a,b] \times \{d\}.
-\end{cases}
-\]
+  \[
+    \begin{cases}
+      \Delta u = 0
+      & (x,y) \in (a,b) \times (c,d),\\
+      u(a,y) = f(y)
+      & (x,y) \in \{a\} \times [c,d],\\
+      u(b,y) = g(y)
+      & (x,y) \in \{b\} \times [c,d],\\
+      u(x,c) = h(x)
+      & (x,y) \in [a,b] \times \{c\},\\
+      u(x,d) = k(x)
+      & (x,y) \in [a,b] \times \{d\}.
+    \end{cases}
+  \]
 \end{minipage}%
 \hfill
 \begin{minipage}{0.50\columnwidth}
-\centering
-\raisebox{-0.5\height}{%
+  \centering
+  \raisebox{-0.5\height}{%
     \includegraphics[width=\columnwidth]{img/splitting_of_laplacian_rectangular_domain.png}
-}
+  }
 \end{minipage}
-
 
 To solve it, we split the problem into two subproblems \(u = u_1 + u_2\):
 
 \[
-\begin{cases}
-\Delta u_1 = 0,\\
-u_1(a,y) = f(y),\\
-u_1(b,y) = g(y),\\
-u_1(x,c) = 0,\\
-u_1(x,d) = 0,
-\end{cases}
-\qquad
-\begin{cases}
-\Delta u_2 = 0,\\
-u_2(a,y) = 0,\\
-u_2(b,y) = 0,\\
-u_2(x,c) = h(x),\\
-u_2(x,d) = k(x).
-\end{cases}
+  \begin{cases}
+    \Delta u_1 = 0,\\
+    u_1(a,y) = f(y),\\
+    u_1(b,y) = g(y),\\
+    u_1(x,c) = 0,\\
+    u_1(x,d) = 0,
+  \end{cases}
+  \qquad
+  \begin{cases}
+    \Delta u_2 = 0,\\
+    u_2(a,y) = 0,\\
+    u_2(b,y) = 0,\\
+    u_2(x,c) = h(x),\\
+    u_2(x,d) = k(x).
+  \end{cases}
 \]
 
 Separation of variables gives two ODEs for \(u_1\) (for \(u_2\) switch \(x\) and \(y\)):
 
 \[
-X''(x) - \lambda X(x) = 0,
-\qquad
-\begin{cases}
-Y''(y) + \lambda Y(y) = 0,\\
-Y(c) = Y(d) = 0.
-\end{cases}
+  X''(x) - \lambda X(x) = 0,
+  \qquad
+  \begin{cases}
+    Y''(y) + \lambda Y(y) = 0,\\
+    Y(c) = Y(d) = 0.
+  \end{cases}
 \]
 
 ---
@@ -721,27 +725,27 @@ Y(c) = Y(d) = 0.
 1. The general solution for \(u_1\) is:
 
 \[
-u_1(x,y)
-= \sum_{n=1}^{\infty}
-\sin\!\left( \frac{n\pi}{d-c} (y-c) \right)
-\left[
-A_n \sinh\!\left( \frac{n\pi}{d-c} (x-a) \right)
-+
-B_n \sinh\!\left( \frac{n\pi}{d-c} (x-b) \right)
-\right].
+  u_1(x,y)
+  = \sum_{n=1}^{\infty}
+  \sin\!\left( \frac{n\pi}{d-c} (y-c) \right)
+  \left[
+    A_n \sinh\!\left( \frac{n\pi}{d-c} (x-a) \right)
+    +
+    B_n \sinh\!\left( \frac{n\pi}{d-c} (x-b) \right)
+  \right].
 \]
 
 2. The general solution for \(u_2\) is:
 
 \[
-u_2(x,y)
-= \sum_{n=1}^{\infty}
-\sin\!\left( \frac{n\pi}{b-a} (x-a) \right)
-\left[
-C_n \sinh\!\left( \frac{n\pi}{b-a} (y-c) \right)
-+
-D_n \sinh\!\left( \frac{n\pi}{b-a} (y-d) \right)
-\right].
+  u_2(x,y)
+  = \sum_{n=1}^{\infty}
+  \sin\!\left( \frac{n\pi}{b-a} (x-a) \right)
+  \left[
+    C_n \sinh\!\left( \frac{n\pi}{b-a} (y-c) \right)
+    +
+    D_n \sinh\!\left( \frac{n\pi}{b-a} (y-d) \right)
+  \right].
 \]
 
 ---
@@ -749,52 +753,52 @@ D_n \sinh\!\left( \frac{n\pi}{b-a} (y-d) \right)
 3. Use the boundary conditions to determine all coefficients and:
 
 \[
-u(x,y) = u_1(x,y) + u_2(x,y).
+  u(x,y) = u_1(x,y) + u_2(x,y).
 \]
 
 \subsection{Disks and Annuli (Polar Coordinates)}
 Let
 \[
-D = \{\, (r,\theta) \mid r \in [a,b],\ \theta \in [0,2\pi) \,\}.
+  D = \{\, (r,\theta) \mid r \in [a,b],\ \theta \in [0,2\pi) \,\}.
 \]
 Assume a separated solution $w(r,\theta)=R(r)\Theta(\theta)$. Then
 \[
-\begin{cases}
-r^2 R''(r) + r R'(r) - \lambda R(r) = 0,\\
-\Theta''(\theta) + \lambda \Theta(\theta) = 0,\\
-\Theta(0)=\Theta(2\pi),\quad \Theta'(0)=\Theta'(2\pi).
-\end{cases}
+  \begin{cases}
+    r^2 R''(r) + r R'(r) - \lambda R(r) = 0,\\
+    \Theta''(\theta) + \lambda \Theta(\theta) = 0,\\
+    \Theta(0)=\Theta(2\pi),\quad \Theta'(0)=\Theta'(2\pi).
+  \end{cases}
 \]
 
 Eigenfunctions:
 \[
-\Theta_n(\theta)=A_n\cos(n\theta)+B_n\sin(n\theta),
-\qquad \lambda_n=n^2,\quad n\in\mathbb{N}_0.
+  \Theta_n(\theta)=A_n\cos(n\theta)+B_n\sin(n\theta),
+  \qquad \lambda_n=n^2,\quad n\in\mathbb{N}_0.
 \]
 
 Radial solutions:
 \[
-R_n(r)=
-\begin{cases}
-C_0 + D_0 \log r, & n=0,\\[4pt]
-C_n r^n + D_n r^{-n}, & n\ge 1.
-\end{cases}
+  R_n(r)=
+  \begin{cases}
+    C_0 + D_0 \log r, & n=0,\\[4pt]
+    C_n r^n + D_n r^{-n}, & n\ge 1.
+  \end{cases}
 \]
 
 \medskip
 
 \textbf{General solution}
 \[
-\begin{aligned}
-w(r,\theta)
-&=
-A_0 + B_0 \log r
-+ \sum_{n=1}^{\infty} r^n
-\bigl[A_n\cos(n\theta)+B_n\sin(n\theta)\bigr] \\
-&\quad
-+ \sum_{n=1}^{\infty} r^{-n}
-\bigl[C_n\cos(n\theta)+D_n\sin(n\theta)\bigr].
-\end{aligned}
+  \begin{aligned}
+    w(r,\theta)
+    &=
+    A_0 + B_0 \log r
+    + \sum_{n=1}^{\infty} r^n
+    \bigl[A_n\cos(n\theta)+B_n\sin(n\theta)\bigr] \\
+    &\quad
+    + \sum_{n=1}^{\infty} r^{-n}
+    \bigl[C_n\cos(n\theta)+D_n\sin(n\theta)\bigr].
+  \end{aligned}
 \]
 
 \medskip
@@ -809,44 +813,44 @@ They must be omitted if $0\in D$ (disk).
 
 Let
 \[
-D = \{\, (r,\theta) \mid r \in [a,b],\ \theta \in [0,\gamma] \,\},
-\qquad \gamma\in(0,2\pi).
+  D = \{\, (r,\theta) \mid r \in [a,b],\ \theta \in [0,\gamma] \,\},
+  \qquad \gamma\in(0,2\pi).
 \]
 Assume homogeneous boundary conditions
 \[
-w(r,0)=w(r,\gamma)=0.
+  w(r,0)=w(r,\gamma)=0.
 \]
 
 Angular problem:
 \[
-\begin{cases}
-\Theta''(\theta)+\lambda\Theta(\theta)=0,\\
-\Theta(0)=\Theta(\gamma)=0,
-\end{cases}
-\quad\Rightarrow\quad
-\Theta_n(\theta)=\sin\!\left(\frac{n\pi}{\gamma}\theta\right),
-\quad
-\lambda_n=\left(\frac{n\pi}{\gamma}\right)^2.
+  \begin{cases}
+    \Theta''(\theta)+\lambda\Theta(\theta)=0,\\
+    \Theta(0)=\Theta(\gamma)=0,
+  \end{cases}
+  \quad\Rightarrow\quad
+  \Theta_n(\theta)=\sin\!\left(\frac{n\pi}{\gamma}\theta\right),
+  \quad
+  \lambda_n=\left(\frac{n\pi}{\gamma}\right)^2.
 \]
 
 Radial solutions:
 \[
-R_n(r)=C_n r^{n\pi/\gamma}+D_n r^{-n\pi/\gamma}.
+  R_n(r)=C_n r^{n\pi/\gamma}+D_n r^{-n\pi/\gamma}.
 \]
 
 \medskip
 
 \textbf{General solution}
 \[
-w(r,\theta)
-=
-\sum_{n=1}^{\infty}
-\left[
-A_n r^{n\pi/\gamma}
-+
-B_n r^{-n\pi/\gamma}
-\right]
-\sin\!\left(\frac{n\pi}{\gamma}\theta\right).
+  w(r,\theta)
+  =
+  \sum_{n=1}^{\infty}
+  \left[
+    A_n r^{n\pi/\gamma}
+    +
+    B_n r^{-n\pi/\gamma}
+  \right]
+  \sin\!\left(\frac{n\pi}{\gamma}\theta\right).
 \]
 
 \medskip
@@ -854,4 +858,3 @@ B_n r^{-n\pi/\gamma}
 \textbf{Remark.}
 The term $r^{-n\pi/\gamma}$ is singular at $r=0$.
 It must be omitted if $0\in D$ (disk sector).
-

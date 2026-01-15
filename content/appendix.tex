@@ -60,6 +60,22 @@
 \end{center}
 
 
+\subsection{Fourier Series}
+%copied from Koma cheatsheet
+
+\textbf{Orthogonalitätsrelationen:}
+$$ \frac{1}{2L} \int_{-L}^L e^{i \frac{n \pi}{L} t}e^{-i \frac{m \pi}{L} t} dt = \begin{cases}1&n=m\\ 0&n\ne m\end{cases}$$
+$$ \int_{-L}^{L}\cos\left(\frac{n\pi t}{L}\right)\cos\left(\frac{m\pi t}{L}\right)dt=\begin{cases}0&n\ne m\\ L&n=m\ne0\\ 2L&n=m=0;\end{cases} $$
+$$ \int_{-L}^{L}\sin\left(\frac{n\pi t}{L}\right)\sin\left(\frac{m\pi t}{L}\right)dt=\begin{cases}0&n\ne m\\ L&n=m\ne0;\end{cases} $$
+$$ \int_{-L}^{L}\cos\left(\frac{n\pi t}{L}\right)\sin\left(\frac{m\pi t}{L}\right)dt=0, \text{ für alle n, m.} $$
+
+% https://tutorial.math.lamar.edu/Classes/DE/PeriodicOrthogonal.aspx
+\textbf{Orthogonalitätsrelationen auf $[0,L]$:}
+$$ \int_0^L \cos\frac{n\pi t}{L}\cos\frac{m\pi t}{L}\ dt = \begin{cases}0 & n\ne m\\ \frac{L}{2} & n=m\ne0\\ L & n=m=0 \end{cases} $$
+$$ \int_0^L \sin\frac{n\pi t}{L}\sin\frac{m\pi t}{L}\ dt = \begin{cases}0 & n\ne m\\ \frac{L}{2} & n=m \end{cases} $$
+$$ \int_0^L \cos\frac{n\pi t}{L}\sin\frac{m\pi t}{L}\ dt = 0 \quad \text{für alle n, m} $$
+
+
 \subsection{Derivatives and Antiderivatives}
 
 \begin{center}
@@ -92,19 +108,3 @@ a^x \ln a & a^x & \frac{1}{\ln a} a^x \\
 \hline
 \end{tabular}
 \end{center}
-
-\subsection{Fourier Series}
-%copied from Koma cheatsheet
-
-\textbf{Orthogonalitätsrelationen:}
-$$ \frac{1}{2L} \int_{-L}^L e^{i \frac{n \pi}{L} t}e^{-i \frac{m \pi}{L} t} dt = \begin{cases}1&n=m\\ 0&n\ne m\end{cases}$$
-$$ \int_{-L}^{L}\cos\left(\frac{n\pi t}{L}\right)\cos\left(\frac{m\pi t}{L}\right)dt=\begin{cases}0&n\ne m\\ L&n=m\ne0\\ 2L&n=m=0;\end{cases} $$
-$$ \int_{-L}^{L}\sin\left(\frac{n\pi t}{L}\right)\sin\left(\frac{m\pi t}{L}\right)dt=\begin{cases}0&n\ne m\\ L&n=m\ne0;\end{cases} $$
-$$ \int_{-L}^{L}\cos\left(\frac{n\pi t}{L}\right)\sin\left(\frac{m\pi t}{L}\right)dt=0, \text{ für alle n, m.} $$
-
-% https://tutorial.math.lamar.edu/Classes/DE/PeriodicOrthogonal.aspx
-\textbf{Orthogonalitätsrelationen auf $[0,L]$:}
-$$ \int_0^L \cos\frac{n\pi t}{L}\cos\frac{m\pi t}{L}\ dt = \begin{cases}0 & n\ne m\\ \frac{L}{2} & n=m\ne0\\ L & n=m=0 \end{cases} $$
-$$ \int_0^L \sin\frac{n\pi t}{L}\sin\frac{m\pi t}{L}\ dt = \begin{cases}0 & n\ne m\\ \frac{L}{2} & n=m \end{cases} $$
-$$ \int_0^L \cos\frac{n\pi t}{L}\sin\frac{m\pi t}{L}\ dt = 0 \quad \text{für alle n, m} $$
-
