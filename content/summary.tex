@@ -21,7 +21,7 @@
 If one or more of these conditions do not hold, then the problem is said to be \textbf{ill-posed}.
 
 \subsection{Classification properties of PDEs}
-\textbf{order} of a PDE is the order of the highest order partial derivative of the unknown appearing within it. $\implies u_{xyz} = xy^2$ has order 2
+\textbf{order} of a PDE is the order of the highest order partial derivative of the unknown appearing within it. $\implies u_{xz} = xy^2$ has order 2
 
 \textbf{a linear} PDE is of the form
 $$
@@ -85,7 +85,7 @@ $$
 $\to$ solve ODEs
 
 \begin{align*}
-  \frac{dx}{dt} = x & &  \implies & x(t) = C_{1}e^t && \implies x(s)=se^t\\
+  \frac{dx}{dt} = x & &  \implies & x(t) = C_{1}e^t && \implies x(t)=se^t\\
   & &  & x(0) = C_{1} \stackrel{!}{=} s \\
   \frac{dy}{dt} = 1 &  & \implies  & y(t) = t+C_{2} && \implies y(t) = t\\
   &  &  & y(0) = C_{2} \stackrel{!}{=} 0 \\
@@ -102,15 +102,15 @@ $$
 Thus, the result is $u(x,y) = y + f(xe^{-y})$.
 
 \subsection{Existence and uniqueness}
-Consider the Cauchy problem
+Consider the Cauchy problem ($\Gamma\in C^1$ parametrizes initial curve in $xy$-plane):
 
 \[
   \begin{cases}
-    a{x, y, u}u_x + b{x, y, u}u_y = c{x, y, u} \\
-    \Gamma(s) = (x_0{s},y_0(s),u_0{s})
+    a(x, y, u)u_x + b(x, y, u)u_y = c(x, y, u) \\
+    \Gamma(s) = (x_0(s),y_0(s),u_0(s))
   \end{cases}
 \]
-Assume that $\exists s_0 \in \mathbb{R}$ such that transversality cond. holds at $(0, s_0)$
+Assume that $\exists s_0 \in \mathbb{R}$ such that \textbf{transversality cond.} holds at $(0, s_0)$
 \[
   \det
   \begin{pmatrix}
@@ -131,7 +131,8 @@ of $(x_0(s_0),y_0(s_0))$
 
 \section{Conservation Laws}
 First-order PDE describing the evolution of a density $u(x,t)$ under a flux $f(u)$:
-$\to f:\mathbb{R}\to\mathbb{R}$ flux function, $c(u)=f'(u)$
+
+$f:\mathbb{R}\to\mathbb{R}$ flux function, $c(u)=f'(u)$
 
 $$u_y + f(u)_x = 0 \quad \text{or} \quad u_y + c(u)u_x = 0$$
 
@@ -234,13 +235,13 @@ Solution consists of a backwards-moving wave $F$ and forward-moving wave $G$:
 $$
 u(x,t) = F(x+ct) + G(x-ct)
 $$
-The solution can be calculated using d'Alembert's (short) formula:
+The solution can be calculated using \textbf{d'Alembert's} (short) \textbf{formula}:
 $$
 u(x,t) = \frac{f(x+ct) + f(x-ct)}{2} + \frac{1}{2c} \int_{x-ct}^{x+ct}g(y)\ dy
 $$
 
 \subsection{non-homogenous wave equation}
-D'Alembert's formula for non-homogenous wave equations:
+\textbf{D'Alembert's formula} for non-homogenous wave equations:
 $$
 u(x,t) = \frac{f(x+ct) + f(x-ct)}{2} + \frac{1}{2c} \int_{x-ct}^{x+ct}g(y)\ dy + \frac{1}{2c}\int_0^t \int_{x-c(t-\tau)}^{x+c(t-\tau)} F(\xi, \tau) \ d\xi d\tau
 $$
@@ -249,7 +250,7 @@ $$
   For a non-homogenous wave equation $u$, define $w:= u-v$, $w$ homogenous:
   $$
   \begin{cases}
-    w_{tt}-c^2 u_{xx}  & =0 \\
+    w_{tt}-c^2 w_{xx}  & =0 \\
     w(x,0) = u(x,0)-v(x,0)  & = f(x) - v(x,0) \\
     w_{t}(x,0) = u_{t}(x,0) - v_{t}(x,0)  & = g(x) - v_{t}(x,0)
   \end{cases}
@@ -288,7 +289,8 @@ Since \(v_1(x)=0\):
 
 \textit{At } \(x=\tfrac{1}{2},\; t=2025\):
 \[
-  u\!\left(\tfrac{1}{2},2025\right)
+  u\left(\tfrac{1}{2},2025\right)
+  = \overbrace{u\left(\tfrac{1}{2},0\right)}^{\text{1-periodic}}
   = \tfrac{1}{2}\big[v_0(\tfrac{1}{2}+t) + v_0(\tfrac{1}{2}-t)\big]
   = v_0\!\left(\tfrac{1}{2}\right)
   = \tfrac{1}{2} - \left(\tfrac{1}{2}\right)^2
@@ -311,7 +313,6 @@ Since \(v_1(x)=0\):
     \scriptsize Characteristic triangle (domain of dependence)
   \end{tabular}
 \end{table}
-\scriptsize
 
 \textbf{Region of influence.}
 The region of influence of an interval $[a,b]$ consists of all points $(x,t)$
@@ -347,14 +348,13 @@ inside the characteristic triangle $\Delta_{(x_0,t_0)}$.
 % compatibility condition
 \textbf{Compatibility Conditions}: To ensure $u \in C^0(\overline{D})$, initial and boundary conditions must match at corners: $f(0) = u(0,0)$ and $f(L) = u(L,0)$. For $C^1$ or $C^2$ solutions, higher-order derivatives must be consistent.
 
-
 \begin{recipe}[Separation of variables for heat/wave equation]
   \begin{enumerate}
-    \item separation of variables to get two ODEs
+    \item separation of variables to get two ODEs: $u(x,t) = X(x)T(t)$
 
-      Substitute $u(x,t) = X(x)T(t)$ into PDE, transform to $\frac{X^{(n)}(x)}{X(x)} = \frac{T^{(m)}(t)}{T(t)} = -\lambda$
+      Substitute approach into PDE, transform to $\frac{X^{(n)}(x)}{X(x)} = \pm\frac{T^{(m)}(t)}{T(t)} = -\lambda$
 
-      ODEs: $X^{(n)}(x) + \lambda X(x) = 0 \quad T^{(m)}(t) + \lambda T(t) = 0$
+      ODEs: $X^{(n)}(x) + \lambda X(x) = 0 \quad T^{(m)}(t) \mp \lambda T(t) = 0$
 
     \item solve ODEs
     \item use \textbf{boundary conditions} to determine eigenvalues $\lambda_n$ and eigenfunctions $X_n(x)$
@@ -448,34 +448,38 @@ $\to$ Can be applied to "nearly all" linear 2nd-order PDEs.
   \end{tabular}
 \end{table}
 \vspace{-10pt}
-\scriptsize
-\textbf{Legend (Boundary Conditions):}
 
-\begin{itemize}[leftmargin=10pt, itemsep=0pt, topsep=0pt]
+{
+  \scriptsize
+  \textbf{Legend (Boundary Conditions):}
 
-  \item \textbf{D} (Dirichlet): $u(0,t)=0,\;u(L,t)=0$
-    \hspace*{12pt}$X_n(x)=\sin\!\left(\tfrac{n\pi x}{L}\right)$
-    \hspace*{12pt}$\lambda_n=\left(\tfrac{n\pi}{L}\right)^2$
+  \begin{itemize}[leftmargin=10pt, itemsep=0pt, topsep=0pt]
 
-  \item \textbf{N} (Neumann): $u_x(0,t)=0,\;u_x(L,t),t=0$
-    \hspace*{12pt}$X_n(x)=\cos\!\left(\tfrac{n\pi x}{L}\right)$
-    \hspace*{12pt}$\lambda_n=\left(\tfrac{n\pi}{L}\right)^2$
+    \item \textbf{D} (Dirichlet): $u(0,t)=0,\;u(L,t)=0$
+      \hspace*{12pt}$X_n(x)=\sin\!\left(\tfrac{n\pi x}{L}\right)$
+      \hspace*{12pt}$\lambda_n=\left(\tfrac{n\pi}{L}\right)^2$
 
-  \item \textbf{DN} (Mixed): $u(0,t)=0,\;u_x(L,t)=0$
-    \hspace*{12pt}$X_n(x)=\sin\!\left(\tfrac{(n-\tfrac12)\pi x}{L}\right)$
-    \hspace*{12pt}$\lambda_n=\left(\tfrac{(n-\tfrac12)\pi}{L}\right)^2$
+    \item \textbf{N} (Neumann): $u_x(0,t)=0,\;u_x(L,t),t=0$
+      \hspace*{12pt}$X_n(x)=\cos\!\left(\tfrac{n\pi x}{L}\right)$
+      \hspace*{12pt}$\lambda_n=\left(\tfrac{n\pi}{L}\right)^2$
 
-  \item \textbf{ND} (Mixed): $u_x(0,t)=0,\;u(L,t)=0$
-    \hspace*{12pt}$X_n(x)=\cos\!\left(\tfrac{(n-\tfrac12)\pi x}{L}\right)$
-    \hspace*{12pt}$\lambda_n=\left(\frac{(n-\tfrac12)\pi}{L}\right)^2$
+    \item \textbf{DN} (Mixed): $u(0,t)=0,\;u_x(L,t)=0$
+      \hspace*{12pt}$X_n(x)=\sin\!\left(\tfrac{(n-\tfrac12)\pi x}{L}\right)$
+      \hspace*{12pt}$\lambda_n=\left(\tfrac{(n-\tfrac12)\pi}{L}\right)^2$
 
-  \item \textbf{R} (Robin):
-    \[
-      \alpha_0 u(0,t) + \beta_0 u_x(0,t) = \gamma_0, \qquad
-      \alpha_L u(L,t) + \beta_L u_x(L,t) = \gamma_L
-    \]
+    \item \textbf{ND} (Mixed): $u_x(0,t)=0,\;u(L,t)=0$
+      \hspace*{12pt}$X_n(x)=\cos\!\left(\tfrac{(n-\tfrac12)\pi x}{L}\right)$
+      \hspace*{12pt}$\lambda_n=\left(\frac{(n-\tfrac12)\pi}{L}\right)^2$
 
-\end{itemize}
+    \item \textbf{R} (Robin):
+      \[
+        \alpha_0 u(0,t) + \beta_0 u_x(0,t) = \gamma_0, \qquad
+        \alpha_L u(L,t) + \beta_L u_x(L,t) = \gamma_L
+      \]
+
+  \end{itemize}
+
+}
 
 \begin{itemize}
   \item $\lambda_n = \left( \frac{n \pi}{L} \right)^2$
@@ -630,35 +634,38 @@ the compatibility condition for $v_1$ yields
 
 \textbf{General solutions}
 
-\[
-  \textstyle
-  v_1(x,y)
-  =
-  A_0 x + B_0
-  +
-  \sum_{n=1}^{\infty}
-  \cos\!\left(\frac{n\pi}{d-c}(y-c)\right)
-  \Bigl[
-    A_n \cosh\!\left(\frac{n\pi}{d-c}(x-a)\right)
+{
+  \scriptsize
+  \[
+    \textstyle
+    v_1(x,y)
+    =
+    A_0 x + B_0
     +
-    B_n \cosh\!\left(\frac{n\pi}{d-c}(x-b)\right)
-  \Bigr]
-\]
+    \sum_{n=1}^{\infty}
+    \cos\!\left(\frac{n\pi}{d-c}(y-c)\right)
+    \Bigl[
+      A_n \cosh\!\left(\frac{n\pi}{d-c}(x-a)\right)
+      +
+      B_n \cosh\!\left(\frac{n\pi}{d-c}(x-b)\right)
+    \Bigr]
+  \]
 
-\[
-  \textstyle
-  v_2(x,y)
-  =
-  C_0 y + D_0
-  +
-  \sum_{n=1}^{\infty}
-  \cos\!\left(\frac{n\pi}{b-a}(x-a)\right)
-  \Bigl[
-    C_n \cosh\!\left(\frac{n\pi}{b-a}(y-c)\right)
+  \[
+    \textstyle
+    v_2(x,y)
+    =
+    C_0 y + D_0
     +
-    D_n \cosh\!\left(\frac{n\pi}{b-a}(y-d)\right)
-  \Bigr]
-\]
+    \sum_{n=1}^{\infty}
+    \cos\!\left(\frac{n\pi}{b-a}(x-a)\right)
+    \Bigl[
+      C_n \cosh\!\left(\frac{n\pi}{b-a}(y-c)\right)
+      +
+      D_n \cosh\!\left(\frac{n\pi}{b-a}(y-d)\right)
+    \Bigr]
+  \]
+}
 
 \[
   u = v + \alpha(x^2-y^2).
@@ -722,31 +729,35 @@ Separation of variables gives two ODEs for \(u_1\) (for \(u_2\) switch \(x\) and
 
 ---
 
-1. The general solution for \(u_1\) is:
+{
+  \scriptsize
 
-\[
-  u_1(x,y)
-  = \sum_{n=1}^{\infty}
-  \sin\!\left( \frac{n\pi}{d-c} (y-c) \right)
-  \left[
-    A_n \sinh\!\left( \frac{n\pi}{d-c} (x-a) \right)
-    +
-    B_n \sinh\!\left( \frac{n\pi}{d-c} (x-b) \right)
-  \right].
-\]
+  1. The general solution for \(u_1\) is:
 
-2. The general solution for \(u_2\) is:
+  \[
+    u_1(x,y)
+    = \sum_{n=1}^{\infty}
+    \sin\!\left( \frac{n\pi}{d-c} (y-c) \right)
+    \left[
+      A_n \sinh\!\left( \frac{n\pi}{d-c} (x-a) \right)
+      +
+      B_n \sinh\!\left( \frac{n\pi}{d-c} (x-b) \right)
+    \right].
+  \]
 
-\[
-  u_2(x,y)
-  = \sum_{n=1}^{\infty}
-  \sin\!\left( \frac{n\pi}{b-a} (x-a) \right)
-  \left[
-    C_n \sinh\!\left( \frac{n\pi}{b-a} (y-c) \right)
-    +
-    D_n \sinh\!\left( \frac{n\pi}{b-a} (y-d) \right)
-  \right].
-\]
+  2. The general solution for \(u_2\) is:
+
+  \[
+    u_2(x,y)
+    = \sum_{n=1}^{\infty}
+    \sin\!\left( \frac{n\pi}{b-a} (x-a) \right)
+    \left[
+      C_n \sinh\!\left( \frac{n\pi}{b-a} (y-c) \right)
+      +
+      D_n \sinh\!\left( \frac{n\pi}{b-a} (y-d) \right)
+    \right].
+  \]
+}
 
 ---
 
