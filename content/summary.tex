@@ -319,7 +319,7 @@ The region of influence of an interval $[a,b]$ consists of all points $(x,t)$
 with $t>0$ that can be affected by the initial data on $[a,b]$.
 These points satisfy
 \[
-  x - ct \le b, \qquad x + ct \ge a.
+  x - ct \ge b, \qquad x + ct \le a.
 \]
 Outside this region, changes in $f$ or $g$ on $[a,b]$ do not influence the solution.
 
@@ -459,7 +459,7 @@ $\to$ Can be applied to "nearly all" linear 2nd-order PDEs.
       \hspace*{12pt}$X_n(x)=\sin\!\left(\tfrac{n\pi x}{L}\right)$
       \hspace*{12pt}$\lambda_n=\left(\tfrac{n\pi}{L}\right)^2$
 
-    \item \textbf{N} (Neumann): $u_x(0,t)=0,\;u_x(L,t),t=0$
+    \item \textbf{N} (Neumann): $u_x(0,t)=0,\;u_x(L,t)=0$
       \hspace*{12pt}$X_n(x)=\cos\!\left(\tfrac{n\pi x}{L}\right)$
       \hspace*{12pt}$\lambda_n=\left(\tfrac{n\pi}{L}\right)^2$
 
@@ -603,7 +603,7 @@ For the Neumann boundary condition, solutions are unique up to additive constant
 
 To decouple boundary conditions, add a harmonic polynomial:
 \[
-  u = v + \alpha(x^2 - y^2),
+  v = u + \alpha(x^2 - y^2),
   \qquad \Delta(x^2-y^2)=0.
 \]
 
