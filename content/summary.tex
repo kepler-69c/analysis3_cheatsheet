@@ -489,13 +489,15 @@ $\to$ Can be applied to "nearly all" linear 2nd-order PDEs.
 
 \warning{Dirichlet starts at $n=1$, Neumann at $n=0$ (constant mode for heat/wave)}
 
-\textbf{Laplace uniqueness}: Given a bounded domain $D\subseteq \mathbb{R}^2$, the Dirichlet problem has at most one solution $u\in C^2(D)\cap C(\overline{D})$.
+\textbf{Dirichlet uniqueness (Poisson)}: Given a bounded domain $D\subseteq \mathbb{R}^2$, the Dirichlet problem has at most one solution $u\in C^2(D)\cap C(\overline{D})$.
 \[
 \begin{cases}
   \Delta u = f & \text{in D}\\
-  u = g' & \text{in}~\partial D
+  u = g & \text{on}~\partial D
 \end{cases}
 \]
+
+\textbf{Note:} This also applies to Laplace ($\Delta u = 0$)
 
 \subsection{non-homogenous PDEs}
 
